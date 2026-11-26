@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1030" height="537" viewBox="0 0 1030 537" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, WenQuanYi Zen Hei, sans-serif">
+<defs><marker id="fill" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker><marker id="open" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10" fill="none" stroke="#222" stroke-width="1.4"/></marker></defs>
+<rect width="1030" height="537" fill="#fff"/>
+<text x="20" y="28" font-size="17" font-weight="bold" fill="#222">SSD · UC-12. 알람 울리기</text>
+<rect x="50" y="296" width="940" height="201" fill="none" stroke="#555" stroke-width="1.2"/>
+<path d="M50,296 h48 v14 l-8,8 h-40 z" fill="#eef2fa" stroke="#555" stroke-width="1.2"/>
+<text x="56" y="312" font-size="13" font-weight="bold">alt</text>
+<text x="106" y="312" font-size="13" fill="#1a4f9c">[30초 안에 버튼 입력]</text>
+<line x1="50" y1="375" x2="990" y2="375" stroke="#555" stroke-dasharray="6 4"/>
+<text x="60" y="391" font-size="13" fill="#1a4f9c">[30초 경과]</text>
+<line x1="140" y1="105" x2="140" y2="517" stroke="#888" stroke-dasharray="5 5"/>
+<g stroke="#222" stroke-width="2" fill="none"><circle cx="140" cy="50" r="10"/><line x1="140" y1="60" x2="140" y2="82"/><line x1="124" y1="68" x2="156" y2="68"/><line x1="140" y1="82" x2="128" y2="98"/><line x1="140" y1="82" x2="152" y2="98"/></g>
+<text x="162" y="98" font-size="14">사용자</text>
+<line x1="500" y1="105" x2="500" y2="517" stroke="#888" stroke-dasharray="5 5"/>
+<rect x="420" y="52" width="160" height="50" fill="#fff8d6" stroke="#7a5c00" stroke-width="1.4"/>
+<text x="500" y="82" text-anchor="middle" font-size="14" text-decoration="underline">:DW Control SW</text>
+<line x1="900" y1="105" x2="900" y2="517" stroke="#888" stroke-dasharray="5 5"/>
+<rect x="820" y="52" width="160" height="50" fill="#eef2fa" stroke="#7a5c00" stroke-width="1.4"/>
+<text x="900" y="72" text-anchor="middle" font-size="14" >«device»</text>
+<text x="900" y="90" text-anchor="middle" font-size="14" >Time Source</text>
+<line x1="900" y1="172" x2="500" y2="172" stroke="#222" stroke-width="1.4" marker-end="url(#fill)"/>
+<text x="700.0" y="165" text-anchor="middle" font-size="14" font-weight="bold" fill="#8a1c1c">tick()</text>
+<path d="M518,186 h250 l10,10 v38 h-260 z" fill="#fffbe6" stroke="#b39500"/>
+<text x="526" y="205" font-size="13">알람 시각 도달</text>
+<text x="526" y="224" font-size="13">지금 화면 상태 저장</text>
+<line x1="500" y1="276" x2="140" y2="276" stroke="#222" stroke-width="1.4" stroke-dasharray="7 4" marker-end="url(#open)"/>
+<text x="320.0" y="269" text-anchor="middle" font-size="14" font-weight="normal" fill="#444">알람음 ON, &#x27;ALM&#x27; 화면 표시</text>
+<path d="M518,334 h246 l10,10 v19 h-256 z" fill="#fffbe6" stroke="#b39500"/>
+<text x="526" y="353" font-size="13">UC-16 경보음 끄기 수행</text>
+<line x1="900" y1="441" x2="500" y2="441" stroke="#222" stroke-width="1.4" marker-end="url(#fill)"/>
+<text x="700.0" y="434" text-anchor="middle" font-size="14" font-weight="bold" fill="#8a1c1c">tick()</text>
+<line x1="500" y1="483" x2="140" y2="483" stroke="#222" stroke-width="1.4" stroke-dasharray="7 4" marker-end="url(#open)"/>
+<text x="320.0" y="476" text-anchor="middle" font-size="14" font-weight="normal" fill="#444">알람음 OFF, 이전 화면 복원 표시</text>
+</svg>

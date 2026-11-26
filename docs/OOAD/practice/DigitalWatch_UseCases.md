@@ -251,3 +251,78 @@ Evident 9개, Hidden 9개.
 | «extend» | UC-16 → UC-12, UC-15 | 경보 중 버튼이 눌리면(조건) 경보음 끄기가 확장한다. |
 
 > 가독성을 위해 생략한 관계: Evident UC(UC-02, 09 ~ 11, 13, 14, 17)가 화면 갱신을 요청하는 관계(UC-03 ~ UC-06). 이 관계는 각 UC description에 적혀 있다.
+
+## 6. System Sequence Diagrams (OOA)
+
+- 편집용 원본: [ssd/DigitalWatch_SSD.drawio](ssd/DigitalWatch_SSD.drawio) (UC마다 한 페이지, 12페이지)
+- 시스템을 black box(`:DW Control SW`)로 놓고, 외부에서 들어오는 **system event**와 시스템의 응답(LCD 표시, 부저)만 그렸다.
+- system event 이름은 **버튼이 아니라 의도 수준**으로 지었다(슬라이드 102: `scan()`보다 `enterItem()`). 버튼 매핑은 아래 System Operations 표에 따로 적었다.
+- Hidden UC는 Use Case Diagram에서는 Actor가 없지만, SSD에서는 사건을 일으키는 외부 장치가 필요하므로 `«device» Time Source`를 lifeline으로 그렸다.
+- 화면 표시 UC(UC-03 ~ UC-08)는 외부 event가 없으므로 따로 SSD를 그리지 않았다. 다른 SSD의 응답 메시지("~ 화면 표시")로 나타난다.
+
+| UC | SSD | UC | SSD |
+|---|---|---|---|
+| UC-01 시간 계수 | ![](ssd/SSD_UC-01.png) | UC-02 시계 기능 전환 | ![](ssd/SSD_UC-02.png) |
+| UC-09 현재 시간 설정 | ![](ssd/SSD_UC-09.png) | UC-10 알람 설정 | ![](ssd/SSD_UC-10.png) |
+| UC-11 알람 해제 | ![](ssd/SSD_UC-11.png) | UC-12 알람 울리기 | ![](ssd/SSD_UC-12.png) |
+| UC-13 타이머 설정 | ![](ssd/SSD_UC-13.png) | UC-14 타이머 시작/정지 | ![](ssd/SSD_UC-14.png) |
+| UC-15 타이머 종료 알림 | ![](ssd/SSD_UC-15.png) | UC-16 경보음 끄기 | ![](ssd/SSD_UC-16.png) |
+| UC-17 세계 시간 조회 | ![](ssd/SSD_UC-17.png) | UC-18 조명 켜기 | ![](ssd/SSD_UC-18.png) |
+
+## 7. System Operations (System Interface)
+
+```
+{Interface}
+DW Control SW
++ tick()
++ changeMode()
++ startSetting()
++ selectNextField()
++ increaseValue()
++ finishSetting()
++ selectNextAlarm()
++ toggleAlarm()
++ startTimer()
++ stopTimer()
++ resetTimer()
++ selectNextCity()
++ turnOnLight()
++ stopAlert()
+```
+
+| System Operation | 의도 | 물리 입력 (상황) | 관련 UC |
+|---|---|---|---|
+| `tick()` | 1초가 지났음을 알린다 | Time Source 1초 인터럽트 | UC-01, UC-12, UC-15 |
+| `changeMode()` | 다음 기능 화면으로 바꾼다 | MODE | UC-02 |
+| `startSetting()` | 설정 모드에 들어간다 | SET 길게 (현재시간·알람·타이머 화면) | UC-09, UC-10, UC-13 |
+| `selectNextField()` | 다음 설정 항목으로 넘어간다 | SET 짧게 (설정 중) | UC-09, UC-10, UC-13 |
+| `increaseValue()` | 편집 중인 값을 1 올린다 | ADJUST (설정 중) | UC-09, UC-10, UC-13 |
+| `finishSetting()` | 설정을 저장하고 끝낸다 | SET 길게 (설정 중) | UC-09, UC-10, UC-13 |
+| `selectNextAlarm()` | 다음 알람 슬롯을 고른다 | ADJUST (알람 화면) | UC-10, UC-11 |
+| `toggleAlarm()` | 선택한 알람을 켜거나 끈다 | SET 짧게 (알람 화면) | UC-11 |
+| `startTimer()` | 타이머를 시작한다 | ADJUST (타이머 화면, 정지 상태) | UC-14 |
+| `stopTimer()` | 타이머를 멈춘다 | ADJUST (타이머 화면, 동작 상태) | UC-14 |
+| `resetTimer()` | 남은 시간을 설정값으로 되돌린다 | SET 짧게 (타이머 화면, 정지 상태) | UC-14 |
+| `selectNextCity()` | 다음 도시를 고른다 | ADJUST (세계시간 화면) | UC-17 |
+| `turnOnLight()` | 백라이트를 켠다 | LIGHT | UC-18 |
+| `stopAlert()` | 울리는 경보음을 끈다 | 아무 버튼 (경보 중) | UC-16 |
+
+## 8. Traceability Table (UC ↔ SSD ↔ System Operation)
+
+| UC | SSD | System Operations |
+|---|---|---|
+| UC-01 시간 계수 | SSD_UC-01 | tick() |
+| UC-02 시계 기능 전환 | SSD_UC-02 | changeMode() |
+| UC-03 ~ UC-06 화면 표시 | (SSD_UC-01, 02, 09 ~ 11, 13, 14, 17의 응답) | – |
+| UC-07 알람 울림 화면 표시 | (SSD_UC-12의 응답) | – |
+| UC-08 타이머 종료 화면 표시 | (SSD_UC-15의 응답) | – |
+| UC-09 현재 시간 설정 | SSD_UC-09 | startSetting(), increaseValue(), selectNextField(), finishSetting() |
+| UC-10 알람 설정 | SSD_UC-10 | selectNextAlarm(), startSetting(), increaseValue(), selectNextField(), finishSetting() |
+| UC-11 알람 해제 | SSD_UC-11 | selectNextAlarm(), toggleAlarm() |
+| UC-12 알람 울리기 | SSD_UC-12 | tick() |
+| UC-13 타이머 설정 | SSD_UC-13 | startSetting(), increaseValue(), selectNextField(), finishSetting() |
+| UC-14 타이머 시작/정지 | SSD_UC-14 | startTimer(), stopTimer(), resetTimer() |
+| UC-15 타이머 종료 알림 | SSD_UC-15 | tick() |
+| UC-16 경보음 끄기 | SSD_UC-16 | stopAlert() |
+| UC-17 세계 시간 조회 | SSD_UC-17 | selectNextCity() |
+| UC-18 조명 켜기 | SSD_UC-18 | turnOnLight() |

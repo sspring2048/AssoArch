@@ -4,13 +4,11 @@ OOAD 팀 실습 (슬라이드 77, 85 ~ 88) · Activity #1 Planning
 
 ## 1. System Context Diagram
 
-```mermaid
-flowchart LR
-    BTN["«device»<br/>Buttons ×4<br/>(MODE, SET, ADJUST, LIGHT)"] -->|press / long-press| SW
-    CLK["«device»<br/>Time Source<br/>(Oscillator / HW Timer)"] -->|0.5초 tick 인터럽트| SW
-    SW["DW Control SW"] -->|화면 표시<br/>백라이트 on/off| LCD["«device»<br/>LCD (+Backlight)"]
-    SW -->|경보음 on/off| BZ["«device»<br/>Buzzer"]
-```
+![System Context Diagram](context/DigitalWatch_SystemContext.png)
+
+- 편집용 원본: [context/DigitalWatch_SystemContext.drawio](context/DigitalWatch_SystemContext.drawio) · 벡터 이미지: [SVG](context/DigitalWatch_SystemContext.svg)
+- 입력 2개(Buttons, Time Source)와 출력 2개(LCD, Buzzer)는 슬라이드 87의 `???` 네 칸에 해당한다.
+- 시스템 경계는 **DW Control SW**다. SW controller에 내장된 HW Timer도 SW 입장에서는 외부 장치로 본다.
 
 ## 2. 전제 (Assumptions)
 

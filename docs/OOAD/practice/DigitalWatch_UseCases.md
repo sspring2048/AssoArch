@@ -7,7 +7,8 @@ OOAD 팀 실습 (슬라이드 77, 85 ~ 88) · Activity #1 Planning
 ![System Context Diagram](context/DigitalWatch_SystemContext.png)
 
 - 편집용 원본: [context/DigitalWatch_SystemContext.drawio](context/DigitalWatch_SystemContext.drawio) · 벡터 이미지: [SVG](context/DigitalWatch_SystemContext.svg)
-- 입력 2개(Buttons, Time Source)와 출력 2개(LCD, Buzzer)는 슬라이드 87의 `???` 네 칸에 해당한다.
+- 입력: MODE · SET · ADJUST · LIGHT 버튼 4개(각각 press/release)와 Time Source(0.5초 tick). 출력: LCD(화면 표시, 백라이트), Buzzer(경보음).
+- 슬라이드 87의 `???` 네 칸(입력 2, 출력 2)에서 입력 쪽 "버튼"을 버튼별로 나눠 그렸다.
 - 시스템 경계는 **DW Control SW**다. SW controller에 내장된 HW Timer도 SW 입장에서는 외부 장치로 본다.
 
 ## 2. 전제 (Assumptions)

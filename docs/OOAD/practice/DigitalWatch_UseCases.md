@@ -233,3 +233,21 @@ Evident 9개, Hidden 9개.
 | Typical | 1. (A) LIGHT 버튼을 누른다.<br>2. (S) LCD 백라이트를 켜고 3초 뒤에 끈다. |
 | Alternative | Line 1: 조명이 켜져 있을 때 다시 누르면 3초를 처음부터 다시 센다. |
 | Exceptional | N/A |
+
+## 5. Use Case Diagram
+
+![Use Case Diagram](DigitalWatch_UseCaseDiagram.png)
+
+- 편집용 원본: [DigitalWatch_UseCaseDiagram.drawio](DigitalWatch_UseCaseDiagram.drawio) (draw.io에서 열기) · 벡터 이미지: [SVG](DigitalWatch_UseCaseDiagram.svg)
+- Actor는 **사용자** 하나다. Evident UC 9개와 연결된다. Hidden UC 9개에는 Actor가 없다(슬라이드 86, 88의 표기와 같다).
+
+| 관계 | Base → 대상 | 의미 |
+|---|---|---|
+| «include» | UC-01 → UC-03, UC-04, UC-05, UC-06 | 시간 계수는 매 tick마다 지금 모드의 화면 표시를 반드시 포함한다. |
+| «include» | UC-12 → UC-07 | 알람 울리기는 알람 울림 화면 표시를 반드시 포함한다. |
+| «include» | UC-15 → UC-08 | 타이머 종료 알림은 타이머 종료 화면 표시를 반드시 포함한다. |
+| «extend» | UC-12 → UC-01 | 알람 시각이 되면(조건) 시간 계수를 알람 울리기가 확장한다. |
+| «extend» | UC-15 → UC-01 | 타이머가 0이 되면(조건) 시간 계수를 타이머 종료 알림이 확장한다. |
+| «extend» | UC-16 → UC-12, UC-15 | 경보 중 버튼이 눌리면(조건) 경보음 끄기가 확장한다. |
+
+> 가독성을 위해 생략한 관계: Evident UC(UC-02, 09 ~ 11, 13, 14, 17)가 화면 갱신을 요청하는 관계(UC-03 ~ UC-06). 이 관계는 각 UC description에 적혀 있다.

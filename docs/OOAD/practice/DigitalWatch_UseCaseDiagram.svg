@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="900" viewBox="0 0 1300 900" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, WenQuanYi Zen Hei, sans-serif">
+<defs><marker id="open" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10" fill="none" stroke="#333" stroke-width="1.4"/></marker></defs>
+<rect width="1300" height="900" fill="#fff"/>
+<rect x="170" y="50" width="1090" height="800" fill="#fffde7" stroke="#8d6e00" stroke-width="1.5"/>
+<text x="1250" y="72" text-anchor="end" font-size="16" font-weight="bold" fill="#333">DW Control SW</text>
+<g stroke="#333" stroke-width="2" fill="none"><circle cx="60" cy="410" r="13"/><line x1="60" y1="423" x2="60" y2="460"/><line x1="38" y1="436" x2="82" y2="436"/><line x1="60" y1="460" x2="42" y2="488"/><line x1="60" y1="460" x2="78" y2="488"/></g>
+<text x="60" y="510" text-anchor="middle" font-size="15">사용자</text>
+<line x1="85" y1="440" x2="395.0" y2="110.0" stroke="#333" stroke-width="1.2"/>
+<line x1="85" y1="440" x2="395.0" y2="195.0" stroke="#333" stroke-width="1.2"/>
+<line x1="85" y1="440" x2="395.0" y2="280.0" stroke="#333" stroke-width="1.2"/>
+<line x1="85" y1="440" x2="395.0" y2="365.0" stroke="#333" stroke-width="1.2"/>
+<line x1="85" y1="440" x2="395.0" y2="450.0" stroke="#333" stroke-width="1.2"/>
+<line x1="85" y1="440" x2="395.0" y2="535.0" stroke="#333" stroke-width="1.2"/>
+<line x1="85" y1="440" x2="395.0" y2="620.0" stroke="#333" stroke-width="1.2"/>
+<line x1="85" y1="440" x2="395.0" y2="705.0" stroke="#333" stroke-width="1.2"/>
+<line x1="85" y1="440" x2="395.0" y2="790.0" stroke="#333" stroke-width="1.2"/>
+<line x1="863.2" y1="256.3" x2="1086.8" y2="133.7" stroke="#333" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="975.0" y="190.0" text-anchor="middle" font-size="12" fill="#1a4f9c" stroke="#fffde7" stroke-width="4" paint-order="stroke">«include»</text>
+<line x1="902.7" y1="264.0" x2="1047.3" y2="236.0" stroke="#333" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="975.0" y="245.0" text-anchor="middle" font-size="12" fill="#1a4f9c" stroke="#fffde7" stroke-width="4" paint-order="stroke">«include»</text>
+<line x1="908.0" y1="294.2" x2="1042.0" y2="315.8" stroke="#333" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="975.0" y="300.0" text-anchor="middle" font-size="12" fill="#1a4f9c" stroke="#fffde7" stroke-width="4" paint-order="stroke">«include»</text>
+<line x1="865.4" y1="303.4" x2="1084.6" y2="416.6" stroke="#333" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="975.0" y="355.0" text-anchor="middle" font-size="12" fill="#1a4f9c" stroke="#fffde7" stroke-width="4" paint-order="stroke">«include»</text>
+<line x1="820.0" y1="574.0" x2="820.0" y2="306.0" stroke="#333" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="820.0" y="435.0" text-anchor="middle" font-size="12" fill="#1a4f9c" stroke="#fffde7" stroke-width="4" paint-order="stroke">«extend»</text>
+<polyline points="838.7,734.4 995,520 838.7,305.6" fill="none" stroke="#333" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="1003.0" y="524.0" text-anchor="start" font-size="12" fill="#1a4f9c" stroke="#fffde7" stroke-width="4" paint-order="stroke">«extend»</text>
+<line x1="925.0" y1="600.0" x2="1025.0" y2="600.0" stroke="#333" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="975.0" y="595.0" text-anchor="middle" font-size="12" fill="#1a4f9c" stroke="#fffde7" stroke-width="4" paint-order="stroke">«include»</text>
+<line x1="925.0" y1="760.0" x2="1025.0" y2="760.0" stroke="#333" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="975.0" y="755.0" text-anchor="middle" font-size="12" fill="#1a4f9c" stroke="#fffde7" stroke-width="4" paint-order="stroke">«include»</text>
+<line x1="540.4" y1="766.0" x2="779.6" y2="624.0" stroke="#333" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="660.0" y="690.0" text-anchor="middle" font-size="12" fill="#1a4f9c" stroke="#fffde7" stroke-width="4" paint-order="stroke">«extend»</text>
+<line x1="598.2" y1="780.8" x2="721.8" y2="769.2" stroke="#333" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="660.0" y="770.0" text-anchor="middle" font-size="12" fill="#1a4f9c" stroke="#fffde7" stroke-width="4" paint-order="stroke">«extend»</text>
+<ellipse cx="500" cy="110" rx="105.0" ry="26.0" fill="#ffffff" stroke="#7a1f1f" stroke-width="1.5"/>
+<text x="500" y="115" text-anchor="middle" font-size="14">UC-02. 시계 기능 전환</text>
+<ellipse cx="500" cy="195" rx="105.0" ry="26.0" fill="#ffffff" stroke="#7a1f1f" stroke-width="1.5"/>
+<text x="500" y="200" text-anchor="middle" font-size="14">UC-09. 현재 시간 설정</text>
+<ellipse cx="500" cy="280" rx="105.0" ry="26.0" fill="#ffffff" stroke="#7a1f1f" stroke-width="1.5"/>
+<text x="500" y="285" text-anchor="middle" font-size="14">UC-10. 알람 설정</text>
+<ellipse cx="500" cy="365" rx="105.0" ry="26.0" fill="#ffffff" stroke="#7a1f1f" stroke-width="1.5"/>
+<text x="500" y="370" text-anchor="middle" font-size="14">UC-11. 알람 해제</text>
+<ellipse cx="500" cy="450" rx="105.0" ry="26.0" fill="#ffffff" stroke="#7a1f1f" stroke-width="1.5"/>
+<text x="500" y="455" text-anchor="middle" font-size="14">UC-13. 타이머 설정</text>
+<ellipse cx="500" cy="535" rx="105.0" ry="26.0" fill="#ffffff" stroke="#7a1f1f" stroke-width="1.5"/>
+<text x="500" y="540" text-anchor="middle" font-size="14">UC-14. 타이머 시작/정지</text>
+<ellipse cx="500" cy="620" rx="105.0" ry="26.0" fill="#ffffff" stroke="#7a1f1f" stroke-width="1.5"/>
+<text x="500" y="625" text-anchor="middle" font-size="14">UC-17. 세계 시간 조회</text>
+<ellipse cx="500" cy="705" rx="105.0" ry="26.0" fill="#ffffff" stroke="#7a1f1f" stroke-width="1.5"/>
+<text x="500" y="710" text-anchor="middle" font-size="14">UC-18. 조명 켜기</text>
+<ellipse cx="500" cy="790" rx="105.0" ry="26.0" fill="#ffffff" stroke="#7a1f1f" stroke-width="1.5"/>
+<text x="500" y="795" text-anchor="middle" font-size="14">UC-16. 경보음 끄기</text>
+<ellipse cx="820" cy="280" rx="105.0" ry="26.0" fill="#e8eef8" stroke="#7a1f1f" stroke-width="1.5"/>
+<text x="820" y="285" text-anchor="middle" font-size="14">UC-01. 시간 계수</text>
+<ellipse cx="820" cy="600" rx="105.0" ry="26.0" fill="#e8eef8" stroke="#7a1f1f" stroke-width="1.5"/>
+<text x="820" y="605" text-anchor="middle" font-size="14">UC-12. 알람 울리기</text>
+<ellipse cx="820" cy="760" rx="105.0" ry="26.0" fill="#e8eef8" stroke="#7a1f1f" stroke-width="1.5"/>
+<text x="820" y="765" text-anchor="middle" font-size="14">UC-15. 타이머 종료 알림</text>
+<ellipse cx="1130" cy="110" rx="105.0" ry="26.0" fill="#e8eef8" stroke="#7a1f1f" stroke-width="1.5"/>
+<text x="1130" y="115" text-anchor="middle" font-size="14">UC-03. 현재시간 화면 표시</text>
+<ellipse cx="1130" cy="220" rx="105.0" ry="26.0" fill="#e8eef8" stroke="#7a1f1f" stroke-width="1.5"/>
+<text x="1130" y="225" text-anchor="middle" font-size="14">UC-04. 알람 화면 표시</text>
+<ellipse cx="1130" cy="330" rx="105.0" ry="26.0" fill="#e8eef8" stroke="#7a1f1f" stroke-width="1.5"/>
+<text x="1130" y="335" text-anchor="middle" font-size="14">UC-05. 타이머 화면 표시</text>
+<ellipse cx="1130" cy="440" rx="105.0" ry="26.0" fill="#e8eef8" stroke="#7a1f1f" stroke-width="1.5"/>
+<text x="1130" y="445" text-anchor="middle" font-size="14">UC-06. 세계시간 화면 표시</text>
+<ellipse cx="1130" cy="600" rx="105.0" ry="26.0" fill="#e8eef8" stroke="#7a1f1f" stroke-width="1.5"/>
+<text x="1130" y="605" text-anchor="middle" font-size="14">UC-07. 알람 울림 화면 표시</text>
+<ellipse cx="1130" cy="760" rx="105.0" ry="26.0" fill="#e8eef8" stroke="#7a1f1f" stroke-width="1.5"/>
+<text x="1130" y="765" text-anchor="middle" font-size="14">UC-08. 타이머 종료 화면 표시</text>
+<g font-size="13"><ellipse cx="210" cy="875" rx="22" ry="10" fill="#fff" stroke="#7a1f1f"/><text x="240" y="880">Evident</text><ellipse cx="330" cy="875" rx="22" ry="10" fill="#e8eef8" stroke="#7a1f1f"/><text x="360" y="880">Hidden (Actor 없음)</text></g>
+</svg>

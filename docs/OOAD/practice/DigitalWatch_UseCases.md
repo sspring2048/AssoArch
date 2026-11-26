@@ -7,7 +7,7 @@ OOAD 팀 실습 (슬라이드 77, 85 ~ 88) · Activity #1 Planning
 ```mermaid
 flowchart LR
     BTN["«device»<br/>Buttons ×4<br/>(MODE, SET, ADJUST, LIGHT)"] -->|press / long-press| SW
-    CLK["«device»<br/>Time Source<br/>(Oscillator / HW Timer)"] -->|1초 tick 인터럽트| SW
+    CLK["«device»<br/>Time Source<br/>(Oscillator / HW Timer)"] -->|0.5초 tick 인터럽트| SW
     SW["DW Control SW"] -->|화면 표시<br/>백라이트 on/off| LCD["«device»<br/>LCD (+Backlight)"]
     SW -->|경보음 on/off| BZ["«device»<br/>Buzzer"]
 ```
@@ -16,20 +16,22 @@ flowchart LR
 
 | 구분 | 내용 |
 |---|---|
-| 하드웨어 | LCD(백라이트 포함) 1개, 버튼 4개, 부저 1개, SW controller 1개, Time Source(1초 tick) |
+| 하드웨어 | LCD(백라이트 포함) 1개, 버튼 4개, 부저 1개, SW controller 1개, Time Source(SW controller에 내장된 HW Timer, **0.5초 tick**) |
 | 버튼 | **MODE**: 기능 화면 전환<br>**SET**: 길게 누르면(2초) 설정 모드 진입/종료, 짧게 누르면 다음 항목으로 이동<br>**ADJUST**: 설정 중에는 값 +1, 설정 모드가 아닐 때는 화면마다 다른 기능<br>**LIGHT**: 백라이트 |
 | 알람 | 슬롯 4개(AL1~AL4) 고정. 각 슬롯을 ON/OFF한다. |
 | 세계시간 | 도시 20개. 도시마다 고정된 UTC offset을 쓰고, 서머타임은 지원하지 않는다. |
 | 전원 | 전원 켜기/끄기는 범위에서 제외한다. 시스템은 항상 동작 중이라고 가정한다. |
 | 초기 상태 | 현재시간 화면, 알람 슬롯 모두 OFF, 타이머 00:00:00 정지, 세계시간 도시는 첫 번째 도시(SEL) |
 | 시간 값 | 설정 무입력 타임아웃 60초, 알람음 30초, 타이머 경보음 10초, 조명 3초, 깜빡임 0.5초 간격 |
+| 계층 구조 | DW Control SW는 3개 계층으로 나눈다(실습 지시: *"Take care of the layered architecture"*).<br>**Device 계층**: 버튼 디바운싱, 짧게/길게(2초) 판정, 길게 누를 때 자동 반복<br>**UI/Control 계층**: 버튼 이벤트와 현재 상태(모드, 설정 중, 경보 중, 타이머 동작)를 보고 System Operation을 호출한다(7.2절 매핑 표)<br>**Domain 계층**: 현재 시각, 알람, 타이머, 도시 등 도메인 데이터와 규칙 |
+| 시간 기반 동작 | 시간 계수(1초), 깜빡임(0.5초), 설정 타임아웃(60초), 경보 지속(30초/10초), 조명(3초)은 모두 `tick()`을 세어 처리한다. 별도 외부 이벤트는 없다. |
 | 이전 화면 | 경보가 시작될 때 기능 화면, 선택 상태, 설정 중인 값을 저장한다. 모든 경보가 끝나면 복원한다. 경보가 겹치면 첫 경보가 시작될 때 한 번만 저장한다. |
 
 ## 3. Use Case 목록
 
 | # | Use Case | Actor | 구분 | 설명 |
 |---|---|---|---|---|
-| UC-01 | 시간 계수 (Timekeeping) | None | Hidden | 1초 tick마다 현재 시각과 타이머를 갱신한다. |
+| UC-01 | 시간 계수 (Timekeeping) | None | Hidden | 0.5초 tick을 세어 현재 시각, 타이머, 깜빡임, 타임아웃을 갱신한다. |
 | UC-02 | 시계 기능 전환 | 사용자 | Evident | MODE 버튼으로 기능 화면을 바꾼다. |
 | UC-03 | 현재시간 화면 표시 | None | Hidden | 현재 시각, 날짜, 아이콘을 표시한다. |
 | UC-04 | 알람 화면 표시 | None | Hidden | 알람 슬롯의 시각과 ON/OFF를 표시한다. |
@@ -60,8 +62,8 @@ Evident 9개, Hidden 9개.
 | **Use Case** | **UC-01. 시간 계수 (Timekeeping)** |
 | Actor | None (Hidden) |
 | Pre-Requisites | N/A |
-| Typical | 1. (S) 1초 tick이 들어오면 현재 시각을 1초 늘린다.<br>2. (S) 타이머가 동작 중이면 남은 시간을 1초 줄인다.<br>3. (S) 알람 시각이 되었는지, 타이머가 0이 되었는지 확인한다.<br>4. (S) 지금 기능 화면에 해당하는 표시 UC(UC-03 ~ UC-06)를 요청한다. |
-| Alternative | Line 1: 23:59:59가 지나면 날짜를 하루 넘긴다(월말·윤년 반영).<br>Line 3: 알람 시각이 되었으면 UC-12, 타이머가 0이 되었으면 UC-15를 수행한다.<br>Line 4: 경보가 울리는 중이면 표시 UC를 요청하지 않는다. 경보 화면을 그대로 둔다. |
+| Typical | 1. (S) 0.5초 tick이 들어오면 깜빡임 상태(보임/숨김)를 뒤집는다.<br>2. (S) 두 번째 tick마다(1초마다) 현재 시각을 1초 늘린다.<br>3. (S) 1초마다, 타이머가 동작 중이면 남은 시간을 1초 줄인다.<br>4. (S) 1초마다 설정 무입력 시간, 경보 지속 시간, 조명 시간을 센다.<br>5. (S) 알람 시각이 되었는지, 타이머가 0이 되었는지 확인한다.<br>6. (S) 지금 기능 화면에 해당하는 표시 UC(UC-03 ~ UC-06)를 요청한다. |
+| Alternative | Line 2: 23:59:59가 지나면 날짜를 하루 넘긴다(월말·윤년 반영).<br>Line 4: 설정 무입력 60초, 알람음 30초, 타이머 경보음 10초, 조명 3초에 이르면 해당 UC(UC-09·10·13의 타임아웃, UC-12, UC-15, UC-18)의 종료 처리를 한다.<br>Line 5: 알람 시각이 되었으면 UC-12, 타이머가 0이 되었으면 UC-15를 수행한다.<br>Line 6: 경보가 울리는 중이면 표시 UC를 요청하지 않는다. 경보 화면을 그대로 둔다. |
 | Exceptional | N/A |
 
 ### UC-02
@@ -141,7 +143,7 @@ Evident 9개, Hidden 9개.
 | Actor | 사용자 (Evident) |
 | Pre-Requisites | 기능 화면이 '현재시간'이어야 한다. |
 | Typical | 1. (A) SET 버튼을 2초 이상 누른다.<br>2. (S) 설정 모드에 들어가고 '초' 항목을 깜빡인다.<br>3. (A) ADJUST로 값을 바꾸고, SET을 짧게 눌러 다음 항목으로 넘어간다. 순서는 초 → 시 → 분 → 년 → 월 → 일이다.<br>4. (A) SET을 2초 이상 눌러 설정을 마친다.<br>5. (S) 바꾼 시간을 저장하고 설정 모드를 끝낸다. UC-03을 요청한다. |
-| Alternative | Line 3: '초' 항목에서 ADJUST를 누르면 초를 00으로 맞춘다.<br>Line 3: 60초 동안 입력이 없으면 지금까지 바꾼 값을 저장하고 설정을 끝낸다. |
+| Alternative | Line 3: '초' 항목에서는 ADJUST를 누르면 값을 1 올리는 대신 초를 00으로 맞춘다(`resetSeconds()`).<br>Line 3: 60초 동안 입력이 없으면 지금까지 바꾼 값을 저장하고 설정을 끝낸다. |
 | Exceptional | Line 5: 없는 날짜(예: 2/30)는 그 달의 마지막 날로 고친다. |
 
 ### UC-10
@@ -255,6 +257,7 @@ Evident 9개, Hidden 9개.
 ## 6. System Sequence Diagrams (OOA)
 
 - 편집용 원본: [ssd/DigitalWatch_SSD.drawio](ssd/DigitalWatch_SSD.drawio) (UC마다 한 페이지, 12페이지)
+- system event 이름은 의도 수준이다. 버튼 → System Operation 변환은 UI/Control 계층이 맡는다고 가정한다(2장 계층 구조, 7.2절 매핑 표).
 - 시스템을 black box(`:DW Control SW`)로 놓고, 외부에서 들어오는 **system event**와 시스템의 응답(LCD 표시, 부저)만 그렸다.
 - system event 이름은 **버튼이 아니라 의도 수준**으로 지었다(슬라이드 102: `scan()`보다 `enterItem()`). 버튼 매핑은 아래 System Operations 표에 따로 적었다.
 - Hidden UC는 Use Case Diagram에서는 Actor가 없지만, SSD에서는 사건을 일으키는 외부 장치가 필요하므로 `«device» Time Source`를 lifeline으로 그렸다.
@@ -279,6 +282,7 @@ DW Control SW
 + startSetting()
 + selectNextField()
 + increaseValue()
++ resetSeconds()
 + finishSetting()
 + selectNextAlarm()
 + toggleAlarm()
@@ -292,11 +296,12 @@ DW Control SW
 
 | System Operation | 의도 | 물리 입력 (상황) | 관련 UC |
 |---|---|---|---|
-| `tick()` | 1초가 지났음을 알린다 | Time Source 1초 인터럽트 | UC-01, UC-12, UC-15 |
+| `tick()` | 0.5초가 지났음을 알린다 | HW Timer 0.5초 인터럽트 | UC-01, UC-12, UC-15 (타임아웃 처리 포함) |
 | `changeMode()` | 다음 기능 화면으로 바꾼다 | MODE | UC-02 |
 | `startSetting()` | 설정 모드에 들어간다 | SET 길게 (현재시간·알람·타이머 화면) | UC-09, UC-10, UC-13 |
 | `selectNextField()` | 다음 설정 항목으로 넘어간다 | SET 짧게 (설정 중) | UC-09, UC-10, UC-13 |
-| `increaseValue()` | 편집 중인 값을 1 올린다 | ADJUST (설정 중) | UC-09, UC-10, UC-13 |
+| `increaseValue()` | 편집 중인 값을 1 올린다 | ADJUST (설정 중, 현재시간 '초' 항목 제외) | UC-09, UC-10, UC-13 |
+| `resetSeconds()` | 초를 00으로 맞춘다 | ADJUST (현재 시간 설정 중, '초' 항목) | UC-09 |
 | `finishSetting()` | 설정을 저장하고 끝낸다 | SET 길게 (설정 중) | UC-09, UC-10, UC-13 |
 | `selectNextAlarm()` | 다음 알람 슬롯을 고른다 | ADJUST (알람 화면) | UC-10, UC-11 |
 | `toggleAlarm()` | 선택한 알람을 켜거나 끈다 | SET 짧게 (알람 화면) | UC-11 |
@@ -307,6 +312,49 @@ DW Control SW
 | `turnOnLight()` | 백라이트를 켠다 | LIGHT | UC-18 |
 | `stopAlert()` | 울리는 경보음을 끈다 | 아무 버튼 (경보 중) | UC-16 |
 
+System Operation은 **15개**다.
+
+### 7.1 계층 가정 – 누가 버튼을 System Operation으로 바꾸는가
+
+```
+ [Buttons] ──press/release──▶ Device 계층 ──버튼 이벤트──▶ UI/Control 계층 ──System Operation──▶ Domain 계층
+ [HW Timer] ─────────────────────────── tick() ─────────────────────────────────────────────────▶ (UC-01)
+                                       · 디바운싱              · 현재 상태를 보고 변환
+                                       · 짧게 / 길게(2초) 판정  · (모드, 설정 중, 경보 중, 타이머 동작)
+                                       · 길게 누를 때 자동 반복
+```
+
+- SSD의 `:DW Control SW`는 세 계층 전체를 black box로 본 것이다. system event는 사용자의 **의도**(슬라이드 102)로 표현했다.
+- Device 계층이 만드는 버튼 이벤트: `MODE`, `SET_SHORT`, `SET_LONG`, `ADJUST`, `ADJUST_REPEAT`(길게 누르는 동안 반복), `LIGHT`
+
+### 7.2 버튼 이벤트 → System Operation 매핑 (UI/Control 계층)
+
+위에서부터 먼저 맞는 행을 적용한다.
+
+| 상태 | MODE | SET 짧게 | SET 길게 | ADJUST (반복 포함) | LIGHT |
+|---|---|---|---|---|---|
+| **경보 중** (알람 울림 / 타이머 종료) | `stopAlert()` | `stopAlert()` | `stopAlert()` | `stopAlert()` | `stopAlert()` + `turnOnLight()` |
+| **설정 중** – 현재시간 '초' 항목 | 무시 | `selectNextField()` | `finishSetting()` | `resetSeconds()` | `turnOnLight()` |
+| **설정 중** – 그 밖의 항목 | 무시 | `selectNextField()` | `finishSetting()` | `increaseValue()` | `turnOnLight()` |
+| 현재시간 화면 | `changeMode()` | 무시 | `startSetting()` | 무시 | `turnOnLight()` |
+| 알람 화면 | `changeMode()` | `toggleAlarm()` | `startSetting()` | `selectNextAlarm()` | `turnOnLight()` |
+| 타이머 화면 – 정지 | `changeMode()` | `resetTimer()` | `startSetting()` | `startTimer()` | `turnOnLight()` |
+| 타이머 화면 – 동작 | `changeMode()` | 무시 | 무시 | `stopTimer()` | `turnOnLight()` |
+| 세계시간 화면 | `changeMode()` | 무시 | 무시 | `selectNextCity()` | `turnOnLight()` |
+
+> 이 표의 행(상태)과 칸(이벤트)이 다음 단계 **Statechart**의 상태와 전이가 된다.
+
+### 7.3 `tick()`에서 파생되는 동작 (별도 System Operation 없음)
+
+| 동작 | 주기 / 조건 | 관련 UC |
+|---|---|---|
+| 깜빡임 보임/숨김 전환 | 매 tick (0.5초) | UC-03 ~ UC-08 |
+| 현재 시각 +1초, 타이머 −1초 | tick 2번마다 (1초) | UC-01 |
+| 설정 무입력 타임아웃 | 60초 | UC-09, UC-10, UC-13 |
+| 알람음 자동 종료 | 30초 | UC-12 |
+| 타이머 경보음 자동 종료 | 10초 | UC-15 |
+| 백라이트 자동 꺼짐 | 3초 | UC-18 |
+
 ## 8. Traceability Table (UC ↔ SSD ↔ System Operation)
 
 | UC | SSD | System Operations |
@@ -316,7 +364,7 @@ DW Control SW
 | UC-03 ~ UC-06 화면 표시 | (SSD_UC-01, 02, 09 ~ 11, 13, 14, 17의 응답) | – |
 | UC-07 알람 울림 화면 표시 | (SSD_UC-12의 응답) | – |
 | UC-08 타이머 종료 화면 표시 | (SSD_UC-15의 응답) | – |
-| UC-09 현재 시간 설정 | SSD_UC-09 | startSetting(), increaseValue(), selectNextField(), finishSetting() |
+| UC-09 현재 시간 설정 | SSD_UC-09 | startSetting(), increaseValue(), resetSeconds(), selectNextField(), finishSetting() |
 | UC-10 알람 설정 | SSD_UC-10 | selectNextAlarm(), startSetting(), increaseValue(), selectNextField(), finishSetting() |
 | UC-11 알람 해제 | SSD_UC-11 | selectNextAlarm(), toggleAlarm() |
 | UC-12 알람 울리기 | SSD_UC-12 | tick() |
@@ -342,7 +390,7 @@ DW Control SW
 | 사용자 | User | |
 | MODE · SET · ADJUST · LIGHT 버튼 | Button | name |
 | 시계 | DigitalWatch | |
-| 1초 tick | TimeSource | period |
+| 0.5초 tick | TimeSource | period |
 | 화면, 백라이트 | LCD | backlightOn |
 | 경보음, 알람음 | Buzzer | isSounding |
 | 기능 화면 (현재시간 / 알람 / 타이머 / 세계시간) | Mode + 하위 개념 4개 | name, order |

@@ -1,43 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1030" height="671" viewBox="0 0 1030 671" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, WenQuanYi Zen Hei, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1030" height="791" viewBox="0 0 1030 791" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, WenQuanYi Zen Hei, sans-serif">
 <defs><marker id="fill" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker><marker id="open" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10" fill="none" stroke="#222" stroke-width="1.4"/></marker></defs>
-<rect width="1030" height="671" fill="#fff"/>
+<rect width="1030" height="791" fill="#fff"/>
 <text x="20" y="28" font-size="17" font-weight="bold" fill="#222">SSD · UC-01. 시간 계수</text>
-<rect x="50" y="254" width="940" height="175" fill="none" stroke="#555" stroke-width="1.2"/>
-<path d="M50,254 h48 v14 l-8,8 h-40 z" fill="#eef2fa" stroke="#555" stroke-width="1.2"/>
-<text x="56" y="270" font-size="13" font-weight="bold">alt</text>
-<text x="106" y="270" font-size="13" fill="#1a4f9c">[현재시간 / 세계시간 화면,</text>
-<text x="60" y="286" font-size="13" fill="#1a4f9c">또는 타이머 동작 중 타이머 화면]</text>
-<line x1="50" y1="348" x2="990" y2="348" stroke="#555" stroke-dasharray="6 4"/>
-<text x="60" y="364" font-size="13" fill="#1a4f9c">[알람 화면]</text>
-<rect x="50" y="449" width="940" height="81" fill="none" stroke="#555" stroke-width="1.2"/>
-<path d="M50,449 h48 v14 l-8,8 h-40 z" fill="#eef2fa" stroke="#555" stroke-width="1.2"/>
-<text x="56" y="465" font-size="13" font-weight="bold">opt</text>
-<text x="106" y="465" font-size="13" fill="#1a4f9c">[알람 시각 도달]</text>
-<rect x="50" y="550" width="940" height="81" fill="none" stroke="#555" stroke-width="1.2"/>
-<path d="M50,550 h48 v14 l-8,8 h-40 z" fill="#eef2fa" stroke="#555" stroke-width="1.2"/>
-<text x="56" y="566" font-size="13" font-weight="bold">opt</text>
-<text x="106" y="566" font-size="13" fill="#1a4f9c">[타이머 남은 시간 = 0]</text>
-<line x1="140" y1="105" x2="140" y2="651" stroke="#888" stroke-dasharray="5 5"/>
+<rect x="50" y="235" width="940" height="119" fill="none" stroke="#555" stroke-width="1.2"/>
+<path d="M50,235 h48 v14 l-8,8 h-40 z" fill="#eef2fa" stroke="#555" stroke-width="1.2"/>
+<text x="56" y="251" font-size="13" font-weight="bold">opt</text>
+<text x="106" y="251" font-size="13" fill="#1a4f9c">[tick 2번째 (1초 경과)]</text>
+<rect x="50" y="374" width="940" height="175" fill="none" stroke="#555" stroke-width="1.2"/>
+<path d="M50,374 h48 v14 l-8,8 h-40 z" fill="#eef2fa" stroke="#555" stroke-width="1.2"/>
+<text x="56" y="390" font-size="13" font-weight="bold">alt</text>
+<text x="106" y="390" font-size="13" fill="#1a4f9c">[현재시간 / 세계시간 화면,</text>
+<text x="60" y="406" font-size="13" fill="#1a4f9c">또는 타이머 동작 중 타이머 화면]</text>
+<line x1="50" y1="468" x2="990" y2="468" stroke="#555" stroke-dasharray="6 4"/>
+<text x="60" y="484" font-size="13" fill="#1a4f9c">[알람 화면]</text>
+<rect x="50" y="569" width="940" height="81" fill="none" stroke="#555" stroke-width="1.2"/>
+<path d="M50,569 h48 v14 l-8,8 h-40 z" fill="#eef2fa" stroke="#555" stroke-width="1.2"/>
+<text x="56" y="585" font-size="13" font-weight="bold">opt</text>
+<text x="106" y="585" font-size="13" fill="#1a4f9c">[알람 시각 도달]</text>
+<rect x="50" y="670" width="940" height="81" fill="none" stroke="#555" stroke-width="1.2"/>
+<path d="M50,670 h48 v14 l-8,8 h-40 z" fill="#eef2fa" stroke="#555" stroke-width="1.2"/>
+<text x="56" y="686" font-size="13" font-weight="bold">opt</text>
+<text x="106" y="686" font-size="13" fill="#1a4f9c">[타이머 남은 시간 = 0]</text>
+<line x1="140" y1="105" x2="140" y2="771" stroke="#888" stroke-dasharray="5 5"/>
 <g stroke="#222" stroke-width="2" fill="none"><circle cx="140" cy="50" r="10"/><line x1="140" y1="60" x2="140" y2="82"/><line x1="124" y1="68" x2="156" y2="68"/><line x1="140" y1="82" x2="128" y2="98"/><line x1="140" y1="82" x2="152" y2="98"/></g>
 <text x="162" y="98" font-size="14">사용자</text>
-<line x1="500" y1="105" x2="500" y2="651" stroke="#888" stroke-dasharray="5 5"/>
+<line x1="500" y1="105" x2="500" y2="771" stroke="#888" stroke-dasharray="5 5"/>
 <rect x="420" y="52" width="160" height="50" fill="#fff8d6" stroke="#7a5c00" stroke-width="1.4"/>
 <text x="500" y="82" text-anchor="middle" font-size="14" text-decoration="underline">:DW Control SW</text>
-<line x1="900" y1="105" x2="900" y2="651" stroke="#888" stroke-dasharray="5 5"/>
+<line x1="900" y1="105" x2="900" y2="771" stroke="#888" stroke-dasharray="5 5"/>
 <rect x="820" y="52" width="160" height="50" fill="#eef2fa" stroke="#7a5c00" stroke-width="1.4"/>
 <text x="900" y="72" text-anchor="middle" font-size="14" >«device»</text>
 <text x="900" y="90" text-anchor="middle" font-size="14" >Time Source</text>
 <line x1="900" y1="172" x2="500" y2="172" stroke="#222" stroke-width="1.4" marker-end="url(#fill)"/>
 <text x="700.0" y="165" text-anchor="middle" font-size="14" font-weight="bold" fill="#8a1c1c">tick()</text>
-<path d="M518,186 h250 l10,10 v38 h-260 z" fill="#fffbe6" stroke="#b39500"/>
-<text x="526" y="205" font-size="13">현재 시각 +1초</text>
-<text x="526" y="224" font-size="13">타이머 동작 중이면 남은 시간 -1초</text>
-<line x1="500" y1="336" x2="140" y2="336" stroke="#222" stroke-width="1.4" stroke-dasharray="7 4" marker-end="url(#open)"/>
-<text x="320.0" y="329" text-anchor="middle" font-size="14" font-weight="normal" fill="#444">현재 화면 갱신 표시</text>
-<path d="M518,386 h246 l10,10 v19 h-256 z" fill="#fffbe6" stroke="#b39500"/>
-<text x="526" y="405" font-size="13">다시 그리지 않음</text>
-<path d="M518,487 h246 l10,10 v19 h-256 z" fill="#fffbe6" stroke="#b39500"/>
-<text x="526" y="506" font-size="13">UC-12 알람 울리기 수행</text>
-<path d="M518,588 h246 l10,10 v19 h-256 z" fill="#fffbe6" stroke="#b39500"/>
-<text x="526" y="607" font-size="13">UC-15 타이머 종료 알림 수행</text>
+<path d="M518,186 h250 l10,10 v19 h-260 z" fill="#fffbe6" stroke="#b39500"/>
+<text x="526" y="205" font-size="13">깜빡임 보임/숨김 전환 (매 tick, 0.5초)</text>
+<path d="M518,273 h246 l10,10 v57 h-256 z" fill="#fffbe6" stroke="#b39500"/>
+<text x="526" y="292" font-size="13">현재 시각 +1초</text>
+<text x="526" y="311" font-size="13">타이머 동작 중이면 남은 시간 -1초</text>
+<text x="526" y="330" font-size="13">설정·경보·조명 시간 카운트</text>
+<line x1="500" y1="456" x2="140" y2="456" stroke="#222" stroke-width="1.4" stroke-dasharray="7 4" marker-end="url(#open)"/>
+<text x="320.0" y="449" text-anchor="middle" font-size="14" font-weight="normal" fill="#444">현재 화면 갱신 표시</text>
+<path d="M518,506 h246 l10,10 v19 h-256 z" fill="#fffbe6" stroke="#b39500"/>
+<text x="526" y="525" font-size="13">다시 그리지 않음</text>
+<path d="M518,607 h246 l10,10 v19 h-256 z" fill="#fffbe6" stroke="#b39500"/>
+<text x="526" y="626" font-size="13">UC-12 알람 울리기 수행</text>
+<path d="M518,708 h246 l10,10 v19 h-256 z" fill="#fffbe6" stroke="#b39500"/>
+<text x="526" y="727" font-size="13">UC-15 타이머 종료 알림 수행</text>
 </svg>

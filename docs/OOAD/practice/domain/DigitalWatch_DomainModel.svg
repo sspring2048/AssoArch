@@ -88,7 +88,7 @@
 <text x="1095.0" y="70" text-anchor="middle" font-size="14" font-weight="bold">TimeSource</text>
 <text x="1095.0" y="87" text-anchor="middle" font-size="12" fill="#555">(시간 발생기)</text>
 <line x1="980" y1="96" x2="1210" y2="96" stroke="#8d6e00"/>
-<text x="988" y="114" font-size="13">period : 0.5초</text>
+<text x="988" y="114" font-size="13">period : 1초</text>
 <rect x="50" y="260" width="230" height="72" fill="#fffde7" stroke="#8d6e00" stroke-width="1.4"/>
 <text x="165.0" y="280" text-anchor="middle" font-size="14" font-weight="bold">Buzzer</text>
 <text x="165.0" y="297" text-anchor="middle" font-size="12" fill="#555">(부저)</text>

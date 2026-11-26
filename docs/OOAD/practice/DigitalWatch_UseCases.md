@@ -7,7 +7,7 @@ OOAD 팀 실습 (슬라이드 77, 85 ~ 88) · Activity #1 Planning
 ![System Context Diagram](context/DigitalWatch_SystemContext.png)
 
 - 편집용 원본: [context/DigitalWatch_SystemContext.drawio](context/DigitalWatch_SystemContext.drawio) · 벡터 이미지: [SVG](context/DigitalWatch_SystemContext.svg)
-- 입력: MODE · SET · ADJUST · LIGHT 버튼 4개(각각 press/release)와 Time Source(0.5초 tick). 출력: LCD(화면 표시, 백라이트), Buzzer(경보음).
+- 입력: MODE · SET · ADJUST · LIGHT 버튼 4개(각각 press/release)와 Time Source(1초 tick). 출력: LCD(화면 표시, 백라이트), Buzzer(경보음).
 - 슬라이드 87의 `???` 네 칸(입력 2, 출력 2)에서 입력 쪽 "버튼"을 버튼별로 나눠 그렸다.
 - 시스템 경계는 **DW Control SW**다. SW controller에 내장된 HW Timer도 SW 입장에서는 외부 장치로 본다.
 
@@ -15,22 +15,24 @@ OOAD 팀 실습 (슬라이드 77, 85 ~ 88) · Activity #1 Planning
 
 | 구분 | 내용 |
 |---|---|
-| 하드웨어 | LCD(백라이트 포함) 1개, 버튼 4개, 부저 1개, SW controller 1개, Time Source(SW controller에 내장된 HW Timer, **0.5초 tick**) |
+| 하드웨어 | LCD(백라이트 포함) 1개, 버튼 4개, 부저 1개, SW controller 1개, Time Source(SW controller에 내장된 HW Timer, **1초 tick**) |
 | 버튼 | **MODE**: 기능 화면 전환<br>**SET**: 길게 누르면(2초) 설정 모드 진입/종료, 짧게 누르면 다음 항목으로 이동<br>**ADJUST**: 설정 중에는 값 +1, 설정 모드가 아닐 때는 화면마다 다른 기능<br>**LIGHT**: 백라이트 |
 | 알람 | 슬롯 4개(AL1~AL4) 고정. 각 슬롯을 ON/OFF한다. |
 | 세계시간 | 도시 20개. 도시마다 고정된 UTC offset을 쓰고, 서머타임은 지원하지 않는다. |
 | 전원 | 전원 켜기/끄기는 범위에서 제외한다. 시스템은 항상 동작 중이라고 가정한다. |
 | 초기 상태 | 현재시간 화면, 알람 슬롯 모두 OFF, 타이머 00:00:00 정지, 세계시간 도시는 첫 번째 도시(SEL) |
-| 시간 값 | 설정 무입력 타임아웃 60초, 알람음 30초, 타이머 경보음 10초, 조명 3초, 깜빡임 0.5초 간격 |
+| 시간 값 | 설정 무입력 타임아웃 60초, 알람음 30초, 타이머 경보음 10초, 조명 3초 |
+| 깜빡임 | LCD 하드웨어의 blink 기능을 쓴다. SW는 "이 항목을 깜빡여라 / 그만"만 지시하고, 깜빡임 주기는 SW가 세지 않는다. |
+| 버튼 시간 처리 | 디바운싱, 길게(2초) 판정, 자동 반복은 Device 계층이 자체 타이머로 처리한다. `tick()`과는 별개다. |
 | 계층 구조 | DW Control SW는 3개 계층으로 나눈다(실습 지시: *"Take care of the layered architecture"*).<br>**Device 계층**: 버튼 디바운싱, 짧게/길게(2초) 판정, 길게 누를 때 자동 반복<br>**UI/Control 계층**: 버튼 이벤트와 현재 상태(모드, 설정 중, 경보 중, 타이머 동작)를 보고 System Operation을 호출한다(7.2절 매핑 표)<br>**Domain 계층**: 현재 시각, 알람, 타이머, 도시 등 도메인 데이터와 규칙 |
-| 시간 기반 동작 | 시간 계수(1초), 깜빡임(0.5초), 설정 타임아웃(60초), 경보 지속(30초/10초), 조명(3초)은 모두 `tick()`을 세어 처리한다. 별도 외부 이벤트는 없다. |
+| 시간 기반 동작 | 시간 계수(1초), 설정 타임아웃(60초), 경보 지속(30초/10초), 조명(3초)은 모두 `tick()`을 세어 처리한다. 별도 외부 이벤트는 없다. |
 | 이전 화면 | 경보가 시작될 때 기능 화면, 선택 상태, 설정 중인 값을 저장한다. 모든 경보가 끝나면 복원한다. 경보가 겹치면 첫 경보가 시작될 때 한 번만 저장한다. |
 
 ## 3. Use Case 목록
 
 | # | Use Case | Actor | 구분 | 설명 |
 |---|---|---|---|---|
-| UC-01 | 시간 계수 (Timekeeping) | None | Hidden | 0.5초 tick을 세어 현재 시각, 타이머, 깜빡임, 타임아웃을 갱신한다. |
+| UC-01 | 시간 계수 (Timekeeping) | None | Hidden | 1초 tick마다 현재 시각, 타이머, 타임아웃을 갱신한다. |
 | UC-02 | 시계 기능 전환 | 사용자 | Evident | MODE 버튼으로 기능 화면을 바꾼다. |
 | UC-03 | 현재시간 화면 표시 | None | Hidden | 현재 시각, 날짜, 아이콘을 표시한다. |
 | UC-04 | 알람 화면 표시 | None | Hidden | 알람 슬롯의 시각과 ON/OFF를 표시한다. |
@@ -61,8 +63,8 @@ Evident 9개, Hidden 9개.
 | **Use Case** | **UC-01. 시간 계수 (Timekeeping)** |
 | Actor | None (Hidden) |
 | Pre-Requisites | N/A |
-| Typical | 1. (S) 0.5초 tick이 들어오면 깜빡임 상태(보임/숨김)를 뒤집는다.<br>2. (S) 두 번째 tick마다(1초마다) 현재 시각을 1초 늘린다.<br>3. (S) 1초마다, 타이머가 동작 중이면 남은 시간을 1초 줄인다.<br>4. (S) 1초마다 설정 무입력 시간, 경보 지속 시간, 조명 시간을 센다.<br>5. (S) 알람 시각이 되었는지, 타이머가 0이 되었는지 확인한다.<br>6. (S) 지금 기능 화면에 해당하는 표시 UC(UC-03 ~ UC-06)를 요청한다. |
-| Alternative | Line 2: 23:59:59가 지나면 날짜를 하루 넘긴다(월말·윤년 반영).<br>Line 4: 설정 무입력 60초, 알람음 30초, 타이머 경보음 10초, 조명 3초에 이르면 해당 UC(UC-09·10·13의 타임아웃, UC-12, UC-15, UC-18)의 종료 처리를 한다.<br>Line 5: 알람 시각이 되었으면 UC-12, 타이머가 0이 되었으면 UC-15를 수행한다.<br>Line 6: 경보가 울리는 중이면 표시 UC를 요청하지 않는다. 경보 화면을 그대로 둔다. |
+| Typical | 1. (S) 1초 tick이 들어오면 현재 시각을 1초 늘린다.<br>2. (S) 타이머가 동작 중이면 남은 시간을 1초 줄인다.<br>3. (S) 설정 무입력 시간, 경보 지속 시간, 조명 시간을 1초씩 센다.<br>4. (S) 알람 시각이 되었는지, 타이머가 0이 되었는지 확인한다.<br>5. (S) 지금 기능 화면에 해당하는 표시 UC(UC-03 ~ UC-06)를 요청한다. |
+| Alternative | Line 1: 23:59:59가 지나면 날짜를 하루 넘긴다(월말·윤년 반영).<br>Line 3: 설정 무입력 60초, 알람음 30초, 타이머 경보음 10초, 조명 3초에 이르면 해당 UC(UC-09·10·13의 타임아웃, UC-12, UC-15, UC-18)의 종료 처리를 한다.<br>Line 4: 알람 시각이 되었으면 UC-12, 타이머가 0이 되었으면 UC-15를 수행한다.<br>Line 5: 경보가 울리는 중이면 표시 UC를 요청하지 않는다. 경보 화면을 그대로 둔다. |
 | Exceptional | N/A |
 
 ### UC-02
@@ -82,7 +84,7 @@ Evident 9개, Hidden 9개.
 | Actor | None (Hidden) |
 | Pre-Requisites | 기능 화면이 '현재시간'이어야 한다. |
 | Typical | 1. (S) UC-01 또는 다른 UC에게서 갱신 요청을 받는다.<br>2. (S) LCD에 다음을 그린다.<br>　- 시:분:초<br>　- 년-월-일, 요일<br>　- 알람 아이콘: ON인 알람이 하나 이상일 때<br>　- 타이머 아이콘: 타이머가 동작 중일 때 |
-| Alternative | Line 2: 시간 설정 모드(UC-09)에서는 편집 중인 항목을 0.5초 간격으로 깜빡인다. |
+| Alternative | Line 2: 시간 설정 모드(UC-09)에서는 편집 중인 항목을 깜빡인다(LCD blink 기능). |
 | Exceptional | N/A |
 
 ### UC-04
@@ -295,7 +297,7 @@ DW Control SW
 
 | System Operation | 의도 | 물리 입력 (상황) | 관련 UC |
 |---|---|---|---|
-| `tick()` | 0.5초가 지났음을 알린다 | HW Timer 0.5초 인터럽트 | UC-01, UC-12, UC-15 (타임아웃 처리 포함) |
+| `tick()` | 1초가 지났음을 알린다 | HW Timer 1초 인터럽트 | UC-01, UC-12, UC-15 (타임아웃 처리 포함) |
 | `changeMode()` | 다음 기능 화면으로 바꾼다 | MODE | UC-02 |
 | `startSetting()` | 설정 모드에 들어간다 | SET 길게 (현재시간·알람·타이머 화면) | UC-09, UC-10, UC-13 |
 | `selectNextField()` | 다음 설정 항목으로 넘어간다 | SET 짧게 (설정 중) | UC-09, UC-10, UC-13 |
@@ -321,7 +323,10 @@ System Operation은 **15개**다.
                                        · 디바운싱              · 현재 상태를 보고 변환
                                        · 짧게 / 길게(2초) 판정  · (모드, 설정 중, 경보 중, 타이머 동작)
                                        · 길게 누를 때 자동 반복
+                                       (자체 타이머 사용)
 ```
+
+- 깜빡임은 LCD 하드웨어 blink 기능으로 처리하므로 `tick()`으로 세지 않는다.
 
 - SSD의 `:DW Control SW`는 세 계층 전체를 black box로 본 것이다. system event는 사용자의 **의도**(슬라이드 102)로 표현했다.
 - Device 계층이 만드는 버튼 이벤트: `MODE`, `SET_SHORT`, `SET_LONG`, `ADJUST`, `ADJUST_REPEAT`(길게 누르는 동안 반복), `LIGHT`
@@ -347,8 +352,7 @@ System Operation은 **15개**다.
 
 | 동작 | 주기 / 조건 | 관련 UC |
 |---|---|---|
-| 깜빡임 보임/숨김 전환 | 매 tick (0.5초) | UC-03 ~ UC-08 |
-| 현재 시각 +1초, 타이머 −1초 | tick 2번마다 (1초) | UC-01 |
+| 현재 시각 +1초, 타이머 −1초 | 매 tick (1초) | UC-01 |
 | 설정 무입력 타임아웃 | 60초 | UC-09, UC-10, UC-13 |
 | 알람음 자동 종료 | 30초 | UC-12 |
 | 타이머 경보음 자동 종료 | 10초 | UC-15 |
@@ -389,7 +393,7 @@ System Operation은 **15개**다.
 | 사용자 | User | |
 | MODE · SET · ADJUST · LIGHT 버튼 | Button | name |
 | 시계 | DigitalWatch | |
-| 0.5초 tick | TimeSource | period |
+| 1초 tick | TimeSource | period |
 | 화면, 백라이트 | LCD | backlightOn |
 | 경보음, 알람음 | Buzzer | isSounding |
 | 기능 화면 (현재시간 / 알람 / 타이머 / 세계시간) | Mode + 하위 개념 4개 | name, order |

@@ -326,3 +326,43 @@ DW Control SW
 | UC-16 경보음 끄기 | SSD_UC-16 | stopAlert() |
 | UC-17 세계 시간 조회 | SSD_UC-17 | selectNextCity() |
 | UC-18 조명 켜기 | SSD_UC-18 | turnOnLight() |
+
+## 9. Domain Model (OOA)
+
+![Domain Model](domain/DigitalWatch_DomainModel.png)
+
+- 편집용 원본: [domain/DigitalWatch_DomainModel.drawio](domain/DigitalWatch_DomainModel.drawio) · 벡터 이미지: [SVG](domain/DigitalWatch_DomainModel.svg)
+- 강의 가이드(슬라이드 106 ~ 109)를 따랐다: **개념 클래스, 속성, 연관만** 그리고 operation은 넣지 않는다. 소프트웨어 산출물(DB, window, 클래스)도 넣지 않는다.
+- 개념 클래스는 UC 설명의 **명사구**에서 찾았다(슬라이드 108).
+
+### 명사구 → 개념 클래스 / 속성
+
+| UC 설명의 명사구 | 개념 클래스 | 속성으로 처리한 것 |
+|---|---|---|
+| 사용자 | User | |
+| MODE · SET · ADJUST · LIGHT 버튼 | Button | name |
+| 시계 | DigitalWatch | |
+| 1초 tick | TimeSource | period |
+| 화면, 백라이트 | LCD | backlightOn |
+| 경보음, 알람음 | Buzzer | isSounding |
+| 기능 화면 (현재시간 / 알람 / 타이머 / 세계시간) | Mode + 하위 개념 4개 | name, order |
+| 설정 모드, 편집 중인 항목 | Setting | editingField, timeoutSec |
+| 현재 시각, 날짜, 요일 | CurrentTime | date, time, dayOfWeek |
+| 알람 슬롯, 알람 시각, ON/OFF | Alarm | slotNo, time, isOn |
+| 설정값, 남은 시간, 동작/정지 | Timer | setTime, remainingTime, isRunning |
+| 도시, 도시 코드, UTC offset | City | code, utcOffset |
+| 이전 화면 (화면 상태 저장) | ScreenState | mode, selection, editingValue |
+| 알람 울림, 타이머 종료 경보 | Alert | kind, durationSec |
+
+### 주요 연관
+
+| 연관 | 다중성 | 근거 |
+|---|---|---|
+| DigitalWatch ◆— Button / LCD / Buzzer / TimeSource | 1 : 4, 1 : 1, 1 : 1, 1 : 1 | 고정된 하드웨어 구성(슬라이드 85). 시계가 없으면 함께 사라지므로 컴포지션 |
+| DigitalWatch — Mode | 1 : 4 | 기능 화면 4개 |
+| Mode ◁ AlarmMode / TimerMode / WorldTimeMode / TimekeepingMode | 일반화 | 모두 "기능 화면"의 한 종류 |
+| LCD — Mode | 1 : 1 (현재) | LCD는 한 번에 기능 화면 하나를 표시 |
+| AlarmMode — Alarm | 1 : 4 | 알람 슬롯 4개 고정 |
+| WorldTimeMode — City | 1 : 20 | 도시 20개 |
+| Alarm / Timer — Alert | 1 : 0..1 | 알람 또는 타이머가 경보를 일으킴 |
+| Alert — ScreenState | 0..2 : 1 | 경보가 겹쳐도(최대 2개) 이전 화면은 하나만 저장 |

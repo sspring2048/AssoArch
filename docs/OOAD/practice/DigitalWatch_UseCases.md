@@ -261,7 +261,7 @@ Evident 9개, Hidden 9개.
 - 편집용 원본: [ssd/DigitalWatch_SSD.drawio](ssd/DigitalWatch_SSD.drawio) (UC마다 한 페이지, 12페이지)
 - system event 이름은 의도 수준이다. 버튼 → System Operation 변환은 시스템 밖의 ButtonHandler(UI 계층)가 맡는다(1장, 2장 계층 구조, 7.2절 매핑 표).
 - 시스템을 black box(`:DW Control SW`)로 놓고, 외부에서 들어오는 **system event**와 시스템의 응답만 그렸다.
-- lifeline은 System Context Diagram의 외부 요소와 같다: system event를 보내는 `:ButtonHandler`와 `Time Source`, 응답(화면 표시, 백라이트, 경보음)을 받는 `LCD · Buzzer`. 교재 SSD(슬라이드 98)처럼 외부 요소는 Actor 모양으로, 시스템은 `:DW Control SW` 상자 하나로 그렸다.
+- lifeline은 System Context Diagram의 외부 요소와 같다: system event를 보내는 `:ButtonHandler`와 `Time Source`, 응답(화면 표시, 백라이트, 경보음)을 받는 `LCD · Buzzer`. 교재 SSD(슬라이드 98)처럼 외부 요소는 Actor 모양으로, 시스템은 `:DW Control SW` 상자 하나로 그렸다. 외부 요소에는 시스템 밖임을 구분하도록 `«device»`를 붙였다.
 - system event 이름은 **버튼이 아니라 의도 수준**으로 지었다(슬라이드 102: `scan()`보다 `enterItem()`). 버튼 매핑은 아래 System Operations 표에 따로 적었다.
 - Hidden UC는 Use Case Diagram에서는 Actor가 없지만, SSD에서는 사건을 일으키는 외부 장치가 필요하므로 `Time Source`를 lifeline으로 그렸다.
 - 화면 표시 UC(UC-03 ~ UC-08)는 외부 event가 없으므로 따로 SSD를 그리지 않았다. 다른 SSD의 응답 메시지("~ 화면 표시")로 나타난다.
@@ -387,7 +387,7 @@ System Operation은 **15개**다.
 ![Domain Model](domain/DigitalWatch_DomainModel.png)
 
 - 편집용 원본: [domain/DigitalWatch_DomainModel.drawio](domain/DigitalWatch_DomainModel.drawio) · 벡터 이미지: [SVG](domain/DigitalWatch_DomainModel.svg)
-- 교재 LMS 예제(슬라이드 98, 269)처럼 모든 개념 클래스에 `<<Business Object>>`를 붙였다. 설계 단계(SD, DCD)에서는 교재처럼 스테레오타입을 쓰지 않는다.
+- 교재 LMS 예제(슬라이드 98, 269)처럼 모든 개념 클래스에 `<<Business Object>>`를 붙였다. 설계 단계(SD, DCD)에서는 교재처럼 내부 클래스에 스테레오타입을 쓰지 않고, 시스템 밖 외부 요소에만 `«device»`를 붙인다.
 - 강의 가이드(슬라이드 106 ~ 109)를 따랐다: **개념 클래스, 속성, 연관만** 그리고 operation은 넣지 않는다. 소프트웨어 산출물(DB, window, 클래스)도 넣지 않는다.
 - 개념 클래스는 UC 설명의 **명사구**에서 찾았다(슬라이드 108).
 
@@ -430,7 +430,7 @@ System Operation은 **15개**다.
 - 메시지 표기는 슬라이드 124의 `return = message(parameter)` 형식을 따랐다. 내용이 뻔한 응답 메시지는 생략했다(슬라이드 122).
 - 메모(note)의 `:=`는 대입(객체 내부 상태가 바뀜)을, `=`는 조건 비교를 뜻한다. 속성 이름은 Domain Model과 같게 썼다(예: `Timer.remainingTime`).
 - **설정 무입력 타이머 규칙:** 설정 중 입력(SD-03 ~ SD-06)이 오면 `WatchController`가 항상 `ModeManager.resetIdle()`을 호출해 `idleSec := 0`으로 만든다. `tick()`(SD-01)은 `countIdle()`로 `idleSec`을 1씩 올리고, 60이 되면 타임아웃을 처리한다. `idleSec`은 설계 속성이라 Domain Model에는 없고 Design Class Diagram의 `ModeManager`에 둔다.
-- 교재 SD(슬라이드 278)처럼 lifeline에 스테레오타입을 붙이지 않았다. 시스템 밖의 `ButtonHandler`, `HWTimer`는 Actor 모양으로 그렸다.
+- 교재 SD(슬라이드 278)처럼 시스템 내부 lifeline에는 스테레오타입을 붙이지 않았다. 시스템 밖의 `ButtonHandler`, `HWTimer`는 Actor 모양에 `«device»`를 붙여 구분했다.
 - 실습 제약(*"No use of any design patterns"*)에 따라 State·Observer 같은 패턴 없이, 모드 분기는 `alt` 프레임(조건문)으로 표현했다.
 
 ### 10.1 참여 클래스와 책임
@@ -497,7 +497,7 @@ System Operation은 **15개**다.
 ![Design Class Diagram](dcd/DigitalWatch_DesignClassDiagram.png)
 
 - 편집용 원본: [dcd/DigitalWatch_DesignClassDiagram.drawio](dcd/DigitalWatch_DesignClassDiagram.drawio) · 벡터 이미지: [SVG](dcd/DigitalWatch_DesignClassDiagram.svg)
-- 교재 Class Diagram(슬라이드 279)처럼 클래스에 스테레오타입을 붙이지 않았다. 타입 정의 상자의 `«enumeration»`, `«dataType»`은 UML 키워드다. 하드웨어 `HWTimer`는 클래스가 아니라서 넣지 않았다. 시스템 경계 밖의 `ButtonHandler`는 SD와 이어지도록 넣되, 회색 점선 테두리로 구분했다.
+- 교재 Class Diagram(슬라이드 279)처럼 시스템 내부 클래스에는 스테레오타입을 붙이지 않았다. 시스템 밖의 `ButtonHandler`만 `«device»`로 표시했다. 타입 정의 상자의 `«enumeration»`, `«dataType»`은 UML 키워드다. 하드웨어 `HWTimer`는 클래스가 아니라서 넣지 않았다. 시스템 경계 밖의 `ButtonHandler`는 SD와 이어지도록 넣되, 회색 점선 테두리로 구분했다.
 - 색 구분: 회색 점선은 시스템 경계 밖 외부 요소(`ButtonHandler`), 노란색은 시스템 내부 클래스, **파란색은 외부 장치(LCD, Buzzer)를 제어하는 드라이버**(`LCDDriver`, `BuzzerDriver`), 회색은 타입 정의다(그림 왼쪽 위 범례).
 - 10장 Sequence Diagram에 나온 메시지를 받는 쪽 클래스의 operation으로 모았다(슬라이드 178: SD에서 Class Diagram을 반복적으로 도출).
 - 표기(슬라이드 142 ~ 164):

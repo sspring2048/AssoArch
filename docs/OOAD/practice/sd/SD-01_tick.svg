@@ -1,74 +1,74 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1805" height="2054" viewBox="0 0 1805 2054" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, WenQuanYi Zen Hei, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1805" height="2112" viewBox="0 0 1805 2112" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, WenQuanYi Zen Hei, sans-serif">
 <defs><marker id="f" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker></defs>
-<rect width="1805" height="2054" fill="#fff"/>
+<rect width="1805" height="2112" fill="#fff"/>
 <text x="20" y="30" font-size="17" font-weight="bold">SD-01 · tick()</text>
 <text x="20" y="50" font-size="13" fill="#555">관련 UC: UC-01, UC-12, UC-15</text>
 <rect x="25" y="270" width="1750" height="84" fill="none" stroke="#666" stroke-width="1.1"/>
 <path d="M25,270 h44 v12 l-8,8 h-36 z" fill="#eef2fa" stroke="#666"/>
 <text x="31" y="285" font-size="12" font-weight="bold">opt</text>
-<rect x="35" y="512" width="1730" height="150" fill="none" stroke="#666" stroke-width="1.1"/>
-<path d="M35,512 h44 v12 l-8,8 h-36 z" fill="#eef2fa" stroke="#666"/>
-<text x="41" y="527" font-size="12" font-weight="bold">opt</text>
-<rect x="25" y="422" width="1750" height="252" fill="none" stroke="#666" stroke-width="1.1"/>
+<rect x="35" y="570" width="1730" height="150" fill="none" stroke="#666" stroke-width="1.1"/>
+<path d="M35,570 h44 v12 l-8,8 h-36 z" fill="#eef2fa" stroke="#666"/>
+<text x="41" y="585" font-size="12" font-weight="bold">opt</text>
+<rect x="25" y="422" width="1750" height="310" fill="none" stroke="#666" stroke-width="1.1"/>
 <path d="M25,422 h44 v12 l-8,8 h-36 z" fill="#eef2fa" stroke="#666"/>
 <text x="31" y="437" font-size="12" font-weight="bold">opt</text>
-<rect x="25" y="728" width="1750" height="84" fill="none" stroke="#666" stroke-width="1.1"/>
-<path d="M25,728 h44 v12 l-8,8 h-36 z" fill="#eef2fa" stroke="#666"/>
-<text x="31" y="743" font-size="12" font-weight="bold">opt</text>
-<rect x="35" y="984" width="1730" height="132" fill="none" stroke="#666" stroke-width="1.1"/>
-<path d="M35,984 h44 v12 l-8,8 h-36 z" fill="#eef2fa" stroke="#666"/>
-<text x="41" y="999" font-size="12" font-weight="bold">opt</text>
-<rect x="25" y="894" width="1750" height="234" fill="none" stroke="#666" stroke-width="1.1"/>
-<path d="M25,894 h44 v12 l-8,8 h-36 z" fill="#eef2fa" stroke="#666"/>
-<text x="31" y="909" font-size="12" font-weight="bold">opt</text>
-<rect x="35" y="1286" width="1730" height="84" fill="none" stroke="#666" stroke-width="1.1"/>
-<path d="M35,1286 h44 v12 l-8,8 h-36 z" fill="#eef2fa" stroke="#666"/>
-<text x="41" y="1301" font-size="12" font-weight="bold">opt</text>
-<rect x="35" y="1388" width="1730" height="466" fill="none" stroke="#666" stroke-width="1.1"/>
-<path d="M35,1388 h44 v12 l-8,8 h-36 z" fill="#eef2fa" stroke="#666"/>
-<text x="41" y="1403" font-size="12" font-weight="bold">alt</text>
-<line x1="35" y1="1620" x2="1765" y2="1620" stroke="#666" stroke-dasharray="6 4"/>
-<rect x="25" y="1246" width="1750" height="742" fill="none" stroke="#666" stroke-width="1.1"/>
-<path d="M25,1246 h44 v12 l-8,8 h-36 z" fill="#eef2fa" stroke="#666"/>
-<text x="31" y="1261" font-size="12" font-weight="bold">alt</text>
-<line x1="25" y1="1864" x2="1775" y2="1864" stroke="#666" stroke-dasharray="6 4"/>
-<line x1="110" y1="112" x2="110" y2="2034" stroke="#999" stroke-dasharray="5 5"/>
+<rect x="25" y="786" width="1750" height="84" fill="none" stroke="#666" stroke-width="1.1"/>
+<path d="M25,786 h44 v12 l-8,8 h-36 z" fill="#eef2fa" stroke="#666"/>
+<text x="31" y="801" font-size="12" font-weight="bold">opt</text>
+<rect x="35" y="1042" width="1730" height="132" fill="none" stroke="#666" stroke-width="1.1"/>
+<path d="M35,1042 h44 v12 l-8,8 h-36 z" fill="#eef2fa" stroke="#666"/>
+<text x="41" y="1057" font-size="12" font-weight="bold">opt</text>
+<rect x="25" y="952" width="1750" height="234" fill="none" stroke="#666" stroke-width="1.1"/>
+<path d="M25,952 h44 v12 l-8,8 h-36 z" fill="#eef2fa" stroke="#666"/>
+<text x="31" y="967" font-size="12" font-weight="bold">opt</text>
+<rect x="35" y="1344" width="1730" height="84" fill="none" stroke="#666" stroke-width="1.1"/>
+<path d="M35,1344 h44 v12 l-8,8 h-36 z" fill="#eef2fa" stroke="#666"/>
+<text x="41" y="1359" font-size="12" font-weight="bold">opt</text>
+<rect x="35" y="1446" width="1730" height="466" fill="none" stroke="#666" stroke-width="1.1"/>
+<path d="M35,1446 h44 v12 l-8,8 h-36 z" fill="#eef2fa" stroke="#666"/>
+<text x="41" y="1461" font-size="12" font-weight="bold">alt</text>
+<line x1="35" y1="1678" x2="1765" y2="1678" stroke="#666" stroke-dasharray="6 4"/>
+<rect x="25" y="1304" width="1750" height="742" fill="none" stroke="#666" stroke-width="1.1"/>
+<path d="M25,1304 h44 v12 l-8,8 h-36 z" fill="#eef2fa" stroke="#666"/>
+<text x="31" y="1319" font-size="12" font-weight="bold">alt</text>
+<line x1="25" y1="1922" x2="1775" y2="1922" stroke="#666" stroke-dasharray="6 4"/>
+<line x1="110" y1="112" x2="110" y2="2092" stroke="#999" stroke-dasharray="5 5"/>
 <rect x="40.0" y="60" width="140" height="52" fill="#eef2fa" stroke="#3b5b92" stroke-width="1.3"/>
 <text x="110" y="79" text-anchor="middle" font-size="11" fill="#555">«device»</text>
 <text x="110" y="98" text-anchor="middle" font-size="13" text-decoration="underline">:HWTimer</text>
-<line x1="285" y1="112" x2="285" y2="2034" stroke="#999" stroke-dasharray="5 5"/>
+<line x1="285" y1="112" x2="285" y2="2092" stroke="#999" stroke-dasharray="5 5"/>
 <rect x="212.68" y="60" width="144.64" height="52" fill="#fde9e7" stroke="#a33a2c" stroke-width="1.3"/>
 <text x="285" y="79" text-anchor="middle" font-size="11" fill="#555">«control»</text>
 <text x="285" y="98" text-anchor="middle" font-size="13" text-decoration="underline">:WatchController</text>
-<line x1="460" y1="112" x2="460" y2="2034" stroke="#999" stroke-dasharray="5 5"/>
+<line x1="460" y1="112" x2="460" y2="2092" stroke="#999" stroke-dasharray="5 5"/>
 <rect x="390.0" y="60" width="140" height="52" fill="#fff8d6" stroke="#7a5c00" stroke-width="1.3"/>
 <text x="460" y="79" text-anchor="middle" font-size="11" fill="#555">«domain»</text>
 <text x="460" y="98" text-anchor="middle" font-size="13" text-decoration="underline">:ModeManager</text>
-<line x1="635" y1="112" x2="635" y2="2034" stroke="#999" stroke-dasharray="5 5"/>
+<line x1="635" y1="112" x2="635" y2="2092" stroke="#999" stroke-dasharray="5 5"/>
 <rect x="565.0" y="60" width="140" height="52" fill="#fff8d6" stroke="#7a5c00" stroke-width="1.3"/>
 <text x="635" y="79" text-anchor="middle" font-size="11" fill="#555">«domain»</text>
 <text x="635" y="98" text-anchor="middle" font-size="13" text-decoration="underline">:TimeKeeper</text>
-<line x1="810" y1="112" x2="810" y2="2034" stroke="#999" stroke-dasharray="5 5"/>
+<line x1="810" y1="112" x2="810" y2="2092" stroke="#999" stroke-dasharray="5 5"/>
 <rect x="740.0" y="60" width="140" height="52" fill="#fff8d6" stroke="#7a5c00" stroke-width="1.3"/>
 <text x="810" y="79" text-anchor="middle" font-size="11" fill="#555">«domain»</text>
 <text x="810" y="98" text-anchor="middle" font-size="13" text-decoration="underline">:AlarmManager</text>
-<line x1="985" y1="112" x2="985" y2="2034" stroke="#999" stroke-dasharray="5 5"/>
+<line x1="985" y1="112" x2="985" y2="2092" stroke="#999" stroke-dasharray="5 5"/>
 <rect x="915.0" y="60" width="140" height="52" fill="#fff8d6" stroke="#7a5c00" stroke-width="1.3"/>
 <text x="985" y="79" text-anchor="middle" font-size="11" fill="#555">«domain»</text>
 <text x="985" y="98" text-anchor="middle" font-size="13" text-decoration="underline">:Timer</text>
-<line x1="1160" y1="112" x2="1160" y2="2034" stroke="#999" stroke-dasharray="5 5"/>
+<line x1="1160" y1="112" x2="1160" y2="2092" stroke="#999" stroke-dasharray="5 5"/>
 <rect x="1090.0" y="60" width="140" height="52" fill="#fff8d6" stroke="#7a5c00" stroke-width="1.3"/>
 <text x="1160" y="79" text-anchor="middle" font-size="11" fill="#555">«domain»</text>
 <text x="1160" y="98" text-anchor="middle" font-size="13" text-decoration="underline">:AlertManager</text>
-<line x1="1335" y1="112" x2="1335" y2="2034" stroke="#999" stroke-dasharray="5 5"/>
+<line x1="1335" y1="112" x2="1335" y2="2092" stroke="#999" stroke-dasharray="5 5"/>
 <rect x="1265.0" y="60" width="140" height="52" fill="#efe7f7" stroke="#6a3d9a" stroke-width="1.3"/>
 <text x="1335" y="79" text-anchor="middle" font-size="11" fill="#555">«UI»</text>
 <text x="1335" y="98" text-anchor="middle" font-size="13" text-decoration="underline">:DisplayManager</text>
-<line x1="1510" y1="112" x2="1510" y2="2034" stroke="#999" stroke-dasharray="5 5"/>
+<line x1="1510" y1="112" x2="1510" y2="2092" stroke="#999" stroke-dasharray="5 5"/>
 <rect x="1440.0" y="60" width="140" height="52" fill="#eef2fa" stroke="#3b5b92" stroke-width="1.3"/>
 <text x="1510" y="79" text-anchor="middle" font-size="11" fill="#555">«device»</text>
 <text x="1510" y="98" text-anchor="middle" font-size="13" text-decoration="underline">:LCDDriver</text>
-<line x1="1685" y1="112" x2="1685" y2="2034" stroke="#999" stroke-dasharray="5 5"/>
+<line x1="1685" y1="112" x2="1685" y2="2092" stroke="#999" stroke-dasharray="5 5"/>
 <rect x="1615.0" y="60" width="140" height="52" fill="#eef2fa" stroke="#3b5b92" stroke-width="1.3"/>
 <text x="1685" y="79" text-anchor="middle" font-size="11" fill="#555">«device»</text>
 <text x="1685" y="98" text-anchor="middle" font-size="13" text-decoration="underline">:BuzzerDriver</text>
@@ -77,25 +77,25 @@
 <rect x="980" y="328" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
 <rect x="455" y="390" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
 <rect x="455" y="480" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
-<rect x="1505" y="786" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
-<rect x="1330" y="710" width="10" height="116" fill="#f4f4f4" stroke="#555"/>
-<rect x="1155" y="862" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
-<rect x="1155" y="952" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
-<rect x="630" y="1164" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
-<rect x="805" y="1214" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
-<rect x="455" y="1344" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
-<rect x="1680" y="1482" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
-<rect x="1155" y="1446" width="10" height="64" fill="#f4f4f4" stroke="#555"/>
-<rect x="1505" y="1582" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
-<rect x="1330" y="1546" width="10" height="64" fill="#f4f4f4" stroke="#555"/>
-<rect x="1680" y="1714" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
-<rect x="1155" y="1678" width="10" height="64" fill="#f4f4f4" stroke="#555"/>
-<rect x="1505" y="1814" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
-<rect x="1330" y="1778" width="10" height="64" fill="#f4f4f4" stroke="#555"/>
-<rect x="1330" y="1922" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
-<rect x="280" y="152" width="10" height="1852" fill="#f4f4f4" stroke="#555"/>
-<rect x="286" y="580" width="10" height="12" fill="#f4f4f4" stroke="#555"/>
-<rect x="286" y="1052" width="10" height="12" fill="#f4f4f4" stroke="#555"/>
+<rect x="1505" y="844" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
+<rect x="1330" y="768" width="10" height="116" fill="#f4f4f4" stroke="#555"/>
+<rect x="1155" y="920" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
+<rect x="1155" y="1010" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
+<rect x="630" y="1222" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
+<rect x="805" y="1272" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
+<rect x="455" y="1402" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
+<rect x="1680" y="1540" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
+<rect x="1155" y="1504" width="10" height="64" fill="#f4f4f4" stroke="#555"/>
+<rect x="1505" y="1640" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
+<rect x="1330" y="1604" width="10" height="64" fill="#f4f4f4" stroke="#555"/>
+<rect x="1680" y="1772" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
+<rect x="1155" y="1736" width="10" height="64" fill="#f4f4f4" stroke="#555"/>
+<rect x="1505" y="1872" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
+<rect x="1330" y="1836" width="10" height="64" fill="#f4f4f4" stroke="#555"/>
+<rect x="1330" y="1980" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
+<rect x="280" y="152" width="10" height="1910" fill="#f4f4f4" stroke="#555"/>
+<rect x="286" y="638" width="10" height="12" fill="#f4f4f4" stroke="#555"/>
+<rect x="286" y="1110" width="10" height="12" fill="#f4f4f4" stroke="#555"/>
 <line x1="110" y1="152" x2="280" y2="152" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
 <text x="195.0" y="146" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">1: tick()</text>
 <line x1="290" y1="188" x2="630" y2="188" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
@@ -108,58 +108,61 @@
 <text x="300" y="384" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">5: setting = isSetting()</text>
 <line x1="290" y1="480" x2="455" y2="480" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
 <text x="300" y="474" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">6: timeout = countIdle()</text>
-<polyline points="295,564 328,564 328,580 305,580" fill="none" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="334" y="570" font-size="13" fill="#8a1c1c">7: handleSettingTimeout()</text>
-<path d="M299,604 h247.56 l10,10 v36 h-257.56 z" fill="#fffbe6" stroke="#b39500"/>
-<text x="307" y="622" font-size="12">알람·타이머: 이전 값 복원(restore)</text>
-<text x="307" y="640" font-size="12">현재시간: 바꾼 값 저장 후 설정 종료</text>
-<line x1="290" y1="710" x2="1330" y2="710" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="810.0" y="704" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">8: countLight()</text>
-<line x1="1340" y1="786" x2="1505" y2="786" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="1350" y="780" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">9: setBacklight(false)</text>
-<line x1="290" y1="862" x2="1155" y2="862" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="722.5" y="856" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">10: alerting = isAlerting()</text>
-<line x1="290" y1="952" x2="1155" y2="952" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="722.5" y="946" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">11: expired = countDown()</text>
-<polyline points="295,1036 328,1036 328,1052 305,1052" fill="none" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="334" y="1042" font-size="13" fill="#8a1c1c">12: stopAlert()</text>
-<path d="M299,1076 h96.24 l10,10 v18 h-106.24 z" fill="#fffbe6" stroke="#b39500"/>
-<text x="307" y="1094" font-size="12">SD-15와 같음</text>
-<line x1="290" y1="1164" x2="630" y2="1164" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="460.0" y="1158" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">13: t = getTime()</text>
-<line x1="290" y1="1214" x2="805" y2="1214" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="547.5" y="1208" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">14: due = checkAlarm(t)</text>
-<line x1="290" y1="1344" x2="455" y2="1344" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="372.5" y="1338" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">15: saveScreen()</text>
-<line x1="290" y1="1446" x2="1155" y2="1446" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="722.5" y="1440" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">16: startAlarmAlert(due)</text>
-<line x1="1165" y1="1482" x2="1680" y2="1482" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="1422.5" y="1476" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">17: on()</text>
-<line x1="290" y1="1546" x2="1330" y2="1546" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="810.0" y="1540" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">18: showAlarmAlert(due)</text>
-<line x1="1340" y1="1582" x2="1505" y2="1582" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="1350" y="1576" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">19: drawAlert(&quot;ALM&quot;, slot, time)</text>
-<line x1="290" y1="1678" x2="1155" y2="1678" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="722.5" y="1672" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">20: startTimerAlert()</text>
-<line x1="1165" y1="1714" x2="1680" y2="1714" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="1422.5" y="1708" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">21: on()</text>
-<line x1="290" y1="1778" x2="1330" y2="1778" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="810.0" y="1772" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">22: showTimerAlert()</text>
-<line x1="1340" y1="1814" x2="1505" y2="1814" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="1350" y="1808" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">23: drawAlert(&quot;TIME UP&quot;)</text>
-<line x1="290" y1="1922" x2="1330" y2="1922" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="810.0" y="1916" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">24: refresh()</text>
-<path d="M1349,1948 h125.1 l10,10 v18 h-135.1 z" fill="#fffbe6" stroke="#b39500"/>
-<text x="1357" y="1966" font-size="12">SD-16 refresh()</text>
+<path d="M474,506 h192.95999999999998 l10,10 v36 h-202.95999999999998 z" fill="#fffbe6" stroke="#b39500"/>
+<text x="482" y="524" font-size="12">idleSec := idleSec + 1</text>
+<text x="482" y="542" font-size="12">timeout = (idleSec ≥ 60)</text>
+<polyline points="295,622 328,622 328,638 305,638" fill="none" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="334" y="628" font-size="13" fill="#8a1c1c">7: handleSettingTimeout()</text>
+<path d="M299,662 h247.56 l10,10 v36 h-257.56 z" fill="#fffbe6" stroke="#b39500"/>
+<text x="307" y="680" font-size="12">알람·타이머: 이전 값 복원(restore)</text>
+<text x="307" y="698" font-size="12">현재시간: 바꾼 값 저장 후 설정 종료</text>
+<line x1="290" y1="768" x2="1330" y2="768" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="810.0" y="762" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">8: countLight()</text>
+<line x1="1340" y1="844" x2="1505" y2="844" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="1350" y="838" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">9: setBacklight(false)</text>
+<line x1="290" y1="920" x2="1155" y2="920" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="722.5" y="914" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">10: alerting = isAlerting()</text>
+<line x1="290" y1="1010" x2="1155" y2="1010" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="722.5" y="1004" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">11: expired = countDown()</text>
+<polyline points="295,1094 328,1094 328,1110 305,1110" fill="none" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="334" y="1100" font-size="13" fill="#8a1c1c">12: stopAlert()</text>
+<path d="M299,1134 h96.24 l10,10 v18 h-106.24 z" fill="#fffbe6" stroke="#b39500"/>
+<text x="307" y="1152" font-size="12">SD-15와 같음</text>
+<line x1="290" y1="1222" x2="630" y2="1222" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="460.0" y="1216" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">13: t = getTime()</text>
+<line x1="290" y1="1272" x2="805" y2="1272" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="547.5" y="1266" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">14: due = checkAlarm(t)</text>
+<line x1="290" y1="1402" x2="455" y2="1402" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="372.5" y="1396" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">15: saveScreen()</text>
+<line x1="290" y1="1504" x2="1155" y2="1504" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="722.5" y="1498" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">16: startAlarmAlert(due)</text>
+<line x1="1165" y1="1540" x2="1680" y2="1540" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="1422.5" y="1534" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">17: on()</text>
+<line x1="290" y1="1604" x2="1330" y2="1604" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="810.0" y="1598" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">18: showAlarmAlert(due)</text>
+<line x1="1340" y1="1640" x2="1505" y2="1640" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="1350" y="1634" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">19: drawAlert(&quot;ALM&quot;, slot, time)</text>
+<line x1="290" y1="1736" x2="1155" y2="1736" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="722.5" y="1730" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">20: startTimerAlert()</text>
+<line x1="1165" y1="1772" x2="1680" y2="1772" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="1422.5" y="1766" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">21: on()</text>
+<line x1="290" y1="1836" x2="1330" y2="1836" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="810.0" y="1830" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">22: showTimerAlert()</text>
+<line x1="1340" y1="1872" x2="1505" y2="1872" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="1350" y="1866" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">23: drawAlert(&quot;TIME UP&quot;)</text>
+<line x1="290" y1="1980" x2="1330" y2="1980" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="810.0" y="1974" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">24: refresh()</text>
+<path d="M1349,2006 h125.1 l10,10 v18 h-135.1 z" fill="#fffbe6" stroke="#b39500"/>
+<text x="1357" y="2024" font-size="12">SD-16 refresh()</text>
 <text x="77" y="285" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[running]</text>
-<text x="87" y="527" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[timeout (60초)]</text>
+<text x="87" y="585" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[timeout (60초)]</text>
 <text x="77" y="437" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[setting]</text>
-<text x="77" y="743" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[조명 3초 경과]</text>
-<text x="87" y="999" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[expired (30초 / 10초)]</text>
-<text x="77" y="909" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[alerting]</text>
-<text x="87" y="1301" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[not alerting]</text>
-<text x="87" y="1403" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[due ≠ null]</text>
-<text x="43" y="1635" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[finished]</text>
-<text x="77" y="1261" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[due ≠ null 또는 finished]</text>
-<text x="33" y="1879" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[not alerting]</text>
+<text x="77" y="801" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[조명 3초 경과]</text>
+<text x="87" y="1057" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[expired (30초 / 10초)]</text>
+<text x="77" y="967" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[alerting]</text>
+<text x="87" y="1359" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[not alerting]</text>
+<text x="87" y="1461" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[due ≠ null]</text>
+<text x="43" y="1693" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[finished]</text>
+<text x="77" y="1319" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[due ≠ null 또는 finished]</text>
+<text x="33" y="1937" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">[not alerting]</text>
 </svg>

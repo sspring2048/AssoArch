@@ -1,38 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="930" height="368" viewBox="0 0 930 368" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, WenQuanYi Zen Hei, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="930" height="408" viewBox="0 0 930 408" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, WenQuanYi Zen Hei, sans-serif">
 <defs><marker id="f" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker></defs>
-<rect width="930" height="368" fill="#fff"/>
+<rect width="930" height="408" fill="#fff"/>
 <text x="20" y="30" font-size="17" font-weight="bold">SD-06 · resetSeconds()</text>
 <text x="20" y="50" font-size="13" fill="#555">관련 UC: UC-09</text>
-<line x1="110" y1="112" x2="110" y2="348" stroke="#999" stroke-dasharray="5 5"/>
+<line x1="110" y1="112" x2="110" y2="388" stroke="#999" stroke-dasharray="5 5"/>
 <rect x="40.0" y="60" width="140" height="52" fill="#eef2fa" stroke="#3b5b92" stroke-width="1.3"/>
 <text x="110" y="79" text-anchor="middle" font-size="11" fill="#555">«device»</text>
 <text x="110" y="98" text-anchor="middle" font-size="13" text-decoration="underline">:ButtonHandler</text>
-<line x1="285" y1="112" x2="285" y2="348" stroke="#999" stroke-dasharray="5 5"/>
+<line x1="285" y1="112" x2="285" y2="388" stroke="#999" stroke-dasharray="5 5"/>
 <rect x="212.68" y="60" width="144.64" height="52" fill="#fde9e7" stroke="#a33a2c" stroke-width="1.3"/>
 <text x="285" y="79" text-anchor="middle" font-size="11" fill="#555">«control»</text>
 <text x="285" y="98" text-anchor="middle" font-size="13" text-decoration="underline">:WatchController</text>
-<line x1="460" y1="112" x2="460" y2="348" stroke="#999" stroke-dasharray="5 5"/>
+<line x1="460" y1="112" x2="460" y2="388" stroke="#999" stroke-dasharray="5 5"/>
 <rect x="390.0" y="60" width="140" height="52" fill="#fff8d6" stroke="#7a5c00" stroke-width="1.3"/>
 <text x="460" y="79" text-anchor="middle" font-size="11" fill="#555">«domain»</text>
 <text x="460" y="98" text-anchor="middle" font-size="13" text-decoration="underline">:ModeManager</text>
-<line x1="635" y1="112" x2="635" y2="348" stroke="#999" stroke-dasharray="5 5"/>
+<line x1="635" y1="112" x2="635" y2="388" stroke="#999" stroke-dasharray="5 5"/>
 <rect x="565.0" y="60" width="140" height="52" fill="#fff8d6" stroke="#7a5c00" stroke-width="1.3"/>
 <text x="635" y="79" text-anchor="middle" font-size="11" fill="#555">«domain»</text>
 <text x="635" y="98" text-anchor="middle" font-size="13" text-decoration="underline">:TimeKeeper</text>
-<line x1="810" y1="112" x2="810" y2="348" stroke="#999" stroke-dasharray="5 5"/>
+<line x1="810" y1="112" x2="810" y2="388" stroke="#999" stroke-dasharray="5 5"/>
 <rect x="740.0" y="60" width="140" height="52" fill="#efe7f7" stroke="#6a3d9a" stroke-width="1.3"/>
 <text x="810" y="79" text-anchor="middle" font-size="11" fill="#555">«UI»</text>
 <text x="810" y="98" text-anchor="middle" font-size="13" text-decoration="underline">:DisplayManager</text>
 <rect x="630" y="188" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
 <rect x="455" y="238" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
-<rect x="805" y="288" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
-<rect x="280" y="152" width="10" height="166" fill="#f4f4f4" stroke="#555"/>
+<rect x="805" y="328" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
+<rect x="280" y="152" width="10" height="206" fill="#f4f4f4" stroke="#555"/>
 <line x1="110" y1="152" x2="280" y2="152" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
 <text x="195.0" y="146" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">1: resetSeconds()</text>
 <line x1="290" y1="188" x2="630" y2="188" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
 <text x="460.0" y="182" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">2: resetSeconds()</text>
 <line x1="290" y1="238" x2="455" y2="238" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
 <text x="372.5" y="232" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">3: resetIdle()</text>
-<line x1="290" y1="288" x2="805" y2="288" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
-<text x="547.5" y="282" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">4: refresh()</text>
+<path d="M474,264 h102.47999999999999 l10,10 v18 h-112.47999999999999 z" fill="#fffbe6" stroke="#b39500"/>
+<text x="482" y="282" font-size="12">idleSec := 0</text>
+<line x1="290" y1="328" x2="805" y2="328" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
+<text x="547.5" y="322" text-anchor="middle" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">4: refresh()</text>
 </svg>

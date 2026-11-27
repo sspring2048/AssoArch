@@ -424,6 +424,7 @@ System Operation은 **15개**다.
 - 슬라이드 113의 "one by one": **System Operation 하나당 Sequence Diagram 하나**(15개) + 화면 갱신 내부 동작 `refresh()` 1개.
 - 메시지 표기는 슬라이드 124의 `return = message(parameter)` 형식을 따랐다. 내용이 뻔한 응답 메시지는 생략했다(슬라이드 122).
 - 메모(note)의 `:=`는 대입(객체 내부 상태가 바뀜)을, `=`는 조건 비교를 뜻한다. 속성 이름은 Domain Model과 같게 썼다(예: `Timer.remainingTime`).
+- **설정 무입력 타이머 규칙:** 설정 중 입력(SD-03 ~ SD-06)이 오면 `WatchController`가 항상 `ModeManager.resetIdle()`을 호출해 `idleSec := 0`으로 만든다. `tick()`(SD-01)은 `countIdle()`로 `idleSec`을 1씩 올리고, 60이 되면 타임아웃을 처리한다. `idleSec`은 설계 속성이라 Domain Model에는 없고 Design Class Diagram의 `ModeManager`에 둔다.
 - 실습 제약(*"No use of any design patterns"*)에 따라 State·Observer 같은 패턴 없이, 모드 분기는 `alt` 프레임(조건문)으로 표현했다.
 
 ### 10.1 참여 클래스와 책임

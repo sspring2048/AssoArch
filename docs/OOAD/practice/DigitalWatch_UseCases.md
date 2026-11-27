@@ -489,3 +489,46 @@ System Operation은 **15개**다.
 | `turnOnLight()` | SD-14 | DisplayManager, LCDDriver |
 | `stopAlert()` | SD-15 | AlertManager, BuzzerDriver, ModeManager, DisplayManager |
 | (`refresh()` 내부) | SD-16 | ModeManager, TimeKeeper, AlarmManager, Alarm, Timer, WorldTime, City, LCDDriver |
+
+## 11. Design Class Diagram (OOD)
+
+![Design Class Diagram](dcd/DigitalWatch_DesignClassDiagram.png)
+
+- 편집용 원본: [dcd/DigitalWatch_DesignClassDiagram.drawio](dcd/DigitalWatch_DesignClassDiagram.drawio) · 벡터 이미지: [SVG](dcd/DigitalWatch_DesignClassDiagram.svg)
+- 10장 Sequence Diagram에 나온 메시지를 받는 쪽 클래스의 operation으로 모았다(슬라이드 178: SD에서 Class Diagram을 반복적으로 도출).
+- 표기(슬라이드 142 ~ 164):
+  - 가시성: `+` public, `-` private. 속성은 `이름 : 타입 [다중성] = 기본값`.
+  - 데이터 타입(`DateTime`, `Time`, `Mode` 등)은 속성 텍스트로, 다른 클래스 참조는 **탐색 방향이 있는 연관선**(열린 화살표)으로 그렸다.
+  - 전체-부분 관계(AlarmManager–Alarm 4, WorldTime–City 20, AlertManager–Alert 0..2)는 컴포지션(◆)으로 그렸다.
+  - SD에 나오지 않는 getter/setter는 넣지 않았다(슬라이드 154).
+  - 반환값으로 받은 객체를 잠깐 쓰는 «use» 의존(WatchController → Alarm 등)은 선이 다른 클래스를 가로질러 그림 안 메모로 대신했다.
+
+### 11.1 Domain Model → Design Class 대응
+
+| Domain Model (개념) | Design Class | 바뀐 점 |
+|---|---|---|
+| User, Button | `ButtonHandler` (경계 밖), enum `ButtonId` | 사용자와 물리 버튼은 소프트웨어 클래스가 아니다. 버튼 입력 해석은 외부 UI 계층 ButtonHandler가 맡는다 |
+| DigitalWatch | `WatchController` | 시스템 전체를 대표하던 개념이 System Operation을 받는 Control 클래스가 되었다 |
+| TimeSource | (없음) | 하드웨어. `tick()`은 WatchController의 operation으로 남았다 |
+| LCD, Buzzer | `LCDDriver`, `BuzzerDriver`, `DisplayManager` | 장치 제어(드라이버)와 화면 구성(DisplayManager)을 나눴다 |
+| Mode + 하위 개념 4개 | enum `Mode` + `ModeManager.currentMode` | 디자인 패턴 금지 제약에 따라 상속(State 패턴) 대신 열거형과 조건 분기로 바꿨다 |
+| Setting | `ModeManager.editingField`, `idleSec` | 설정 상태를 ModeManager의 속성으로 합쳤다. `idleSec`은 설계 단계에서 생긴 속성이다 |
+| ScreenState | dataType `ScreenState`, `ModeManager.savedScreen` | 값 객체(dataType)로 바꿨다 |
+| CurrentTime | `TimeKeeper` | 현재 시각을 갖고 계산하는 클래스 |
+| Alarm, Timer, City | `Alarm`, `Timer`, `City` | 그대로. 설정 취소용 `backup...` 속성을 추가했다. `Timer.isRunning` 속성은 operation `isRunning()`과 이름이 겹쳐 `running`으로 바꿨다 |
+| AlarmMode, WorldTimeMode의 연관 | `AlarmManager`, `WorldTime` | 슬롯 4개, 도시 20개를 관리하는 클래스로 바꿨다 |
+| Alert | `AlertManager` + `Alert` | 경보 생성·종료·카운트를 맡는 관리자와 경보 하나를 나눴다 |
+
+### 11.2 클래스별 operation 출처
+
+| 클래스 | operation | 출처 SD |
+|---|---|---|
+| WatchController | System Operation 15개, `getInputState()`, `handleSettingTimeout()` | SD-01 ~ SD-15, 7.1절 |
+| ModeManager | `nextMode`, `getMode`, `isSetting`, `beginSetting`, `nextField`, `getEditingField`, `endSetting`, `resetIdle`, `countIdle`, `saveScreen`, `restoreScreen` | SD-01 ~ 07, 15, 16 |
+| TimeKeeper | `increaseSecond`, `getTime`, `increase`, `resetSeconds`, `normalizeDate` | SD-01, 05 ~ 07, 16 |
+| AlarmManager / Alarm | `selectNext`, `getSelected`, `checkAlarm`, `hasOnAlarm` / `increase`, `setOn`, `toggle`, `backup`, `restore`, `isDue`, `getInfo` | SD-01, 03, 05, 07 ~ 09, 16 |
+| Timer | `isRunning`, `start`, `stop`, `reset`, `decrease`, `increaseSetTime`, `applySetTime`, `backup`, `restore`, `getDisplayInfo` | SD-01, 03, 05, 07, 10 ~ 12, 16 |
+| WorldTime / City | `selectNext`, `getSelectedCity` / `getCode`, `localTime` | SD-13, 16 |
+| AlertManager | `isAlerting`, `countDown`, `startAlarmAlert`, `startTimerAlert`, `stop` | SD-01, 15 |
+| DisplayManager | `refresh`, `showAlarmAlert`, `showTimerAlert`, `showAlert`, `turnOnLight`, `countLight`, `show...View`(UC-03 ~ 06) | SD-01 ~ 16 |
+| LCDDriver / BuzzerDriver | `draw...View`, `drawAlert`, `blink`, `stopBlink`, `setBacklight` / `on`, `off` | SD-01, 14 ~ 16 |

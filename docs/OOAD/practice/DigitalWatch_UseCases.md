@@ -261,7 +261,7 @@ Evident 9개, Hidden 9개.
 - 편집용 원본: [ssd/DigitalWatch_SSD.drawio](ssd/DigitalWatch_SSD.drawio) (UC마다 한 페이지, 12페이지)
 - system event 이름은 의도 수준이다. 버튼 → System Operation 변환은 시스템 밖의 ButtonHandler(UI 계층)가 맡는다(1장, 2장 계층 구조, 7.2절 매핑 표).
 - 시스템을 black box(`:DW Control SW`)로 놓고, 외부에서 들어오는 **system event**와 시스템의 응답만 그렸다.
-- lifeline은 System Context Diagram의 외부 요소와 같다: system event를 보내는 `«UI layer» :ButtonHandler`와 `«device» Time Source`, 응답(화면 표시, 백라이트, 경보음)을 받는 `«device» LCD · Buzzer`.
+- lifeline은 System Context Diagram의 외부 요소와 같다: system event를 보내는 `«device» :ButtonHandler`와 `«device» Time Source`, 응답(화면 표시, 백라이트, 경보음)을 받는 `«device» LCD · Buzzer`.
 - system event 이름은 **버튼이 아니라 의도 수준**으로 지었다(슬라이드 102: `scan()`보다 `enterItem()`). 버튼 매핑은 아래 System Operations 표에 따로 적었다.
 - Hidden UC는 Use Case Diagram에서는 Actor가 없지만, SSD에서는 사건을 일으키는 외부 장치가 필요하므로 `«device» Time Source`를 lifeline으로 그렸다.
 - 화면 표시 UC(UC-03 ~ UC-08)는 외부 event가 없으므로 따로 SSD를 그리지 않았다. 다른 SSD의 응답 메시지("~ 화면 표시")로 나타난다.
@@ -322,7 +322,7 @@ System Operation은 **15개**다.
 ```
             시스템 경계 밖                              │ 시스템 경계 안 (DW Control SW)
  [Buttons] ──press/release──▶ ButtonHandler ──System Operation──▶ WatchController ──▶ Domain 계층
-                              («UI layer»)  ◀──현재 상태 조회────    («control»)
+                              («device»)    ◀──현재 상태 조회────    («control»)
                               · 디바운싱                         │
                               · 짧게 / 길게(2초) 판정             │
                               · 자동 반복 (자체 타이머)            │

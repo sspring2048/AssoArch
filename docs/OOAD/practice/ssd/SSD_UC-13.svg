@@ -17,8 +17,8 @@
 <line x1="50" y1="724" x2="970" y2="724" stroke="#555" stroke-dasharray="6 4"/>
 <text x="60" y="740" font-size="13" fill="#1a4f9c">[타이머 동작 중]</text>
 <line x1="140" y1="105" x2="140" y2="825" stroke="#888" stroke-dasharray="5 5"/>
-<rect x="60" y="52" width="160" height="50" fill="#f3eefa" stroke="#6a3d9a" stroke-width="1.4"/>
-<text x="140" y="72" text-anchor="middle" font-size="14" >«UI layer»</text>
+<rect x="60" y="52" width="160" height="50" fill="#eef2fa" stroke="#7a5c00" stroke-width="1.4"/>
+<text x="140" y="72" text-anchor="middle" font-size="14" >«device»</text>
 <text x="140" y="90" text-anchor="middle" font-size="14" text-decoration="underline">:ButtonHandler</text>
 <line x1="500" y1="105" x2="500" y2="825" stroke="#888" stroke-dasharray="5 5"/>
 <rect x="420" y="52" width="160" height="50" fill="#fff8d6" stroke="#7a5c00" stroke-width="1.4"/>

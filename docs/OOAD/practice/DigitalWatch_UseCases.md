@@ -497,8 +497,8 @@ System Operation은 **15개**다.
 ![Design Class Diagram](dcd/DigitalWatch_DesignClassDiagram.png)
 
 - 편집용 원본: [dcd/DigitalWatch_DesignClassDiagram.drawio](dcd/DigitalWatch_DesignClassDiagram.drawio) · 벡터 이미지: [SVG](dcd/DigitalWatch_DesignClassDiagram.svg)
-- 교재 Class Diagram(슬라이드 279)처럼 시스템 내부 클래스에는 스테레오타입을 붙이지 않았다. 시스템 밖의 `ButtonHandler`, `LCDDriver`, `BuzzerDriver`만 `«device»`로 표시했다. 타입 정의 상자의 `«enumeration»`, `«dataType»`은 UML 키워드다. 하드웨어 `HWTimer`는 클래스가 아니라서 넣지 않았다. 시스템 경계 밖의 `ButtonHandler`, `LCDDriver`, `BuzzerDriver`는 SD와 이어지도록 넣되, 회색 점선 테두리와 `«device»`로 구분했다.
-- 색 구분: 회색 점선 + `«device»`는 시스템 경계 밖 외부 요소(`ButtonHandler`, `LCDDriver`, `BuzzerDriver`), 노란색은 시스템 내부 클래스, 회색은 타입 정의다(그림 오른쪽 아래 범례).
+- 교재 Class Diagram(슬라이드 279)처럼 시스템 내부 클래스에는 스테레오타입을 붙이지 않았다. 시스템 밖의 `ButtonHandler`, `LCDDriver`, `BuzzerDriver`만 `«device»`로 표시했다. 타입 정의(열거형, 데이터 타입)는 그림에서 빼고 11.3절 표로 정리했다. 하드웨어 `HWTimer`는 클래스가 아니라서 넣지 않았다. 시스템 경계 밖의 `ButtonHandler`, `LCDDriver`, `BuzzerDriver`는 SD와 이어지도록 넣되, 회색 점선 테두리와 `«device»`로 구분했다.
+- 색 구분: 회색 점선 + `«device»`는 시스템 경계 밖 외부 요소(`ButtonHandler`, `LCDDriver`, `BuzzerDriver`), 노란색은 시스템 내부 클래스다(그림 왼쪽 범례).
 - 10장 Sequence Diagram에 나온 메시지를 받는 쪽 클래스의 operation으로 모았다(슬라이드 178: SD에서 Class Diagram을 반복적으로 도출).
 - 표기(슬라이드 142 ~ 164):
   - 가시성: `+` public, `-` private. 속성은 `이름 : 타입 [다중성] = 기본값`.
@@ -536,3 +536,21 @@ System Operation은 **15개**다.
 | AlertManager | `isAlerting`, `countDown`, `startAlarmAlert`, `startTimerAlert`, `stop` | SD-01, 15 |
 | DisplayManager | `refresh`, `showAlarmAlert`, `showTimerAlert`, `showAlert`, `turnOnLight`, `countLight`, `show...View`(UC-03 ~ 06) | SD-01 ~ 16 |
 | LCDDriver / BuzzerDriver | `draw...View`, `drawAlert`, `blink`, `stopBlink`, `setBacklight` / `on`, `off` | SD-01, 14 ~ 16 |
+
+### 11.3 타입 정의
+
+DCD 속성·operation에 쓰인 타입이다. 그림을 간결하게 하려고 DCD에서는 빼고 여기에 정리한다.
+
+| 구분 | 타입 | 값 / 구성 |
+|---|---|---|
+| 열거형 | `Mode` | TIME, ALARM, TIMER, WORLD |
+| 열거형 | `Field` | SECOND, MINUTE, HOUR, YEAR, MONTH, DAY |
+| 열거형 | `AlertKind` | ALARM, TIMER |
+| 열거형 | `ButtonId` | MODE, SET, ADJUST, LIGHT |
+| 열거형 | `ButtonEvent` | MODE, SET_SHORT, SET_LONG, ADJUST, ADJUST_REPEAT, LIGHT |
+| 데이터 타입 | `DateTime` | 년, 월, 일, 시, 분, 초, 요일 |
+| 데이터 타입 | `Time` | 시, 분, 초 |
+| 데이터 타입 | `AlarmInfo` | slotNo, time, isOn |
+| 데이터 타입 | `TimerInfo` | time, running |
+| 데이터 타입 | `InputState` | mode, setting, field, alerting, timerRunning |
+| 데이터 타입 | `ScreenState` | mode, selection, editingField, editingValue |

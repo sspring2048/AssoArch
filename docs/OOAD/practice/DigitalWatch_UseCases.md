@@ -7,9 +7,10 @@ OOAD 팀 실습 (슬라이드 77, 85 ~ 88) · Activity #1 Planning
 ![System Context Diagram](context/DigitalWatch_SystemContext.png)
 
 - 편집용 원본: [context/DigitalWatch_SystemContext.drawio](context/DigitalWatch_SystemContext.drawio) · 벡터 이미지: [SVG](context/DigitalWatch_SystemContext.svg)
-- 입력: MODE · SET · ADJUST · LIGHT 버튼 4개(각각 press/release)와 Time Source(1초 tick). 출력: LCD(화면 표시, 백라이트), Buzzer(경보음).
-- 슬라이드 87의 `???` 네 칸(입력 2, 출력 2)에서 입력 쪽 "버튼"을 버튼별로 나눠 그렸다.
-- 시스템 경계는 **DW Control SW**다. SW controller에 내장된 HW Timer도 SW 입장에서는 외부 장치로 본다.
+- 입력: **ButtonHandler**(UI 계층)가 보내는 System Operation, Time Source의 `tick()`(1초). 출력: LCD(화면 표시, 백라이트), Buzzer(경보음).
+- 시스템 경계는 **DW Control SW**다. ButtonHandler는 UI 계층으로 보고 **경계 밖 외부 요소**로 둔다. 물리 버튼 4개(MODE · SET · ADJUST · LIGHT)의 press/release는 ButtonHandler가 받아서 해석한다.
+- ButtonHandler는 7.2절 매핑에 필요한 **현재 상태**(모드, 설정 중, 경보 중, 타이머 동작)를 DW Control SW에서 조회한다(점선).
+- SW controller에 내장된 HW Timer도 SW 입장에서는 외부 장치로 본다.
 
 ## 2. 전제 (Assumptions)
 
@@ -23,8 +24,8 @@ OOAD 팀 실습 (슬라이드 77, 85 ~ 88) · Activity #1 Planning
 | 초기 상태 | 현재시간 화면, 알람 슬롯 모두 OFF, 타이머 00:00:00 정지, 세계시간 도시는 첫 번째 도시(SEL) |
 | 시간 값 | 설정 무입력 타임아웃 60초, 알람음 30초, 타이머 경보음 10초, 조명 3초 |
 | 깜빡임 | LCD 하드웨어의 blink 기능을 쓴다. SW는 "이 항목을 깜빡여라 / 그만"만 지시하고, 깜빡임 주기는 SW가 세지 않는다. |
-| 버튼 시간 처리 | 디바운싱, 길게(2초) 판정, 자동 반복은 Device 계층이 자체 타이머로 처리한다. `tick()`과는 별개다. |
-| 계층 구조 | DW Control SW는 3개 계층으로 나눈다(실습 지시: *"Take care of the layered architecture"*).<br>**Device 계층**: 버튼 디바운싱, 짧게/길게(2초) 판정, 길게 누를 때 자동 반복<br>**UI/Control 계층**: 버튼 이벤트와 현재 상태(모드, 설정 중, 경보 중, 타이머 동작)를 보고 System Operation을 호출한다(7.2절 매핑 표)<br>**Domain 계층**: 현재 시각, 알람, 타이머, 도시 등 도메인 데이터와 규칙 |
+| 버튼 시간 처리 | 디바운싱, 길게(2초) 판정, 자동 반복은 ButtonHandler(UI 계층)가 자체 타이머로 처리한다. `tick()`과는 별개다. |
+| 계층 구조 | 실습 지시(*"Take care of the layered architecture"*)에 따라 계층으로 나눈다.<br>**UI 계층 – 입력 (시스템 경계 밖)**: `ButtonHandler`. 버튼 디바운싱, 짧게/길게(2초) 판정, 자동 반복, 현재 상태를 조회해 System Operation 호출(7.2절 매핑 표)<br>**Control 계층**: `WatchController`. System Operation을 받아 도메인 객체에 일을 나눈다<br>**Domain 계층**: 현재 시각, 알람, 타이머, 도시 등 도메인 데이터와 규칙<br>**UI 계층 – 출력 / Device 드라이버**: `DisplayManager`, `LCDDriver`, `BuzzerDriver` |
 | 시간 기반 동작 | 시간 계수(1초), 설정 타임아웃(60초), 경보 지속(30초/10초), 조명(3초)은 모두 `tick()`을 세어 처리한다. 별도 외부 이벤트는 없다. |
 | 이전 화면 | 경보가 시작될 때 기능 화면, 선택 상태, 설정 중인 값을 저장한다. 모든 경보가 끝나면 복원한다. 경보가 겹치면 첫 경보가 시작될 때 한 번만 저장한다. |
 
@@ -258,7 +259,7 @@ Evident 9개, Hidden 9개.
 ## 6. System Sequence Diagrams (OOA)
 
 - 편집용 원본: [ssd/DigitalWatch_SSD.drawio](ssd/DigitalWatch_SSD.drawio) (UC마다 한 페이지, 12페이지)
-- system event 이름은 의도 수준이다. 버튼 → System Operation 변환은 UI/Control 계층이 맡는다고 가정한다(2장 계층 구조, 7.2절 매핑 표).
+- system event 이름은 의도 수준이다. 버튼 → System Operation 변환은 시스템 밖의 ButtonHandler(UI 계층)가 맡는다(1장, 2장 계층 구조, 7.2절 매핑 표).
 - 시스템을 black box(`:DW Control SW`)로 놓고, 외부에서 들어오는 **system event**와 시스템의 응답(LCD 표시, 부저)만 그렸다.
 - system event 이름은 **버튼이 아니라 의도 수준**으로 지었다(슬라이드 102: `scan()`보다 `enterItem()`). 버튼 매핑은 아래 System Operations 표에 따로 적었다.
 - Hidden UC는 Use Case Diagram에서는 Actor가 없지만, SSD에서는 사건을 일으키는 외부 장치가 필요하므로 `«device» Time Source`를 lifeline으로 그렸다.
@@ -318,20 +319,22 @@ System Operation은 **15개**다.
 ### 7.1 계층 가정 – 누가 버튼을 System Operation으로 바꾸는가
 
 ```
- [Buttons] ──press/release──▶ Device 계층 ──버튼 이벤트──▶ UI/Control 계층 ──System Operation──▶ Domain 계층
- [HW Timer] ─────────────────────────── tick() ─────────────────────────────────────────────────▶ (UC-01)
-                                       · 디바운싱              · 현재 상태를 보고 변환
-                                       · 짧게 / 길게(2초) 판정  · (모드, 설정 중, 경보 중, 타이머 동작)
-                                       · 길게 누를 때 자동 반복
-                                       (자체 타이머 사용)
+            시스템 경계 밖                              │ 시스템 경계 안 (DW Control SW)
+ [Buttons] ──press/release──▶ ButtonHandler ──System Operation──▶ WatchController ──▶ Domain 계층
+                              («UI layer»)  ◀──현재 상태 조회────    («control»)
+                              · 디바운싱                         │
+                              · 짧게 / 길게(2초) 판정             │
+                              · 자동 반복 (자체 타이머)            │
+                              · 상태 + 버튼 → 매핑(7.2절)         │
+ [HW Timer] ───────────────────────── tick() ─────────────────────▶ WatchController
 ```
 
 - 깜빡임은 LCD 하드웨어 blink 기능으로 처리하므로 `tick()`으로 세지 않는다.
+- SSD의 `:DW Control SW`는 경계 안 전체를 black box로 본 것이다. system event는 사용자의 **의도**(슬라이드 102)로 표현했다.
+- ButtonHandler가 판정하는 버튼 이벤트: `MODE`, `SET_SHORT`, `SET_LONG`, `ADJUST`, `ADJUST_REPEAT`(길게 누르는 동안 반복), `LIGHT`
+- **현재 상태 조회**는 상태를 바꾸지 않는 질의라서 System Operation(15개)에 넣지 않는다. Design Class Diagram에서 `WatchController`의 조회용 operation(예: `getInputState()`)으로 둔다.
 
-- SSD의 `:DW Control SW`는 세 계층 전체를 black box로 본 것이다. system event는 사용자의 **의도**(슬라이드 102)로 표현했다.
-- Device 계층이 만드는 버튼 이벤트: `MODE`, `SET_SHORT`, `SET_LONG`, `ADJUST`, `ADJUST_REPEAT`(길게 누르는 동안 반복), `LIGHT`
-
-### 7.2 버튼 이벤트 → System Operation 매핑 (UI/Control 계층)
+### 7.2 버튼 이벤트 → System Operation 매핑 (ButtonHandler, UI 계층)
 
 위에서부터 먼저 맞는 행을 적용한다.
 
@@ -431,7 +434,7 @@ System Operation은 **15개**다.
 
 | 계층 | 클래스 | 책임 |
 |---|---|---|
-| Device | `ButtonHandler` | 디바운싱, 짧게/길게 판정, 자동 반복. 7.2절 매핑에 따라 `WatchController`의 System Operation 호출 |
+| UI (경계 밖) | `ButtonHandler` | 외부 요소. 디바운싱, 짧게/길게 판정, 자동 반복. 현재 상태를 조회해 7.2절 매핑에 따라 `WatchController`의 System Operation 호출 |
 | Device | `HWTimer` | 1초마다 `tick()` 호출 |
 | Device | `LCDDriver` | 화면 그리기(`drawTimeView()` 등), `blink()`, `setBacklight()` |
 | Device | `BuzzerDriver` | `on()`, `off()` |

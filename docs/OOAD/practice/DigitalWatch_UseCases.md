@@ -417,3 +417,69 @@ System Operation은 **15개**다.
 | WorldTimeMode — City | 1 : 20 | 도시 20개 |
 | Alarm / Timer — Alert | 1 : 0..1 | 알람 또는 타이머가 경보를 일으킴 |
 | Alert — ScreenState | 0..2 : 1 | 경보가 겹쳐도(최대 2개) 이전 화면은 하나만 저장 |
+
+## 10. Sequence Diagrams (OOD)
+
+- 편집용 원본: [sd/DigitalWatch_SequenceDiagrams.drawio](sd/DigitalWatch_SequenceDiagrams.drawio) (16페이지)
+- 슬라이드 113의 "one by one": **System Operation 하나당 Sequence Diagram 하나**(15개) + 화면 갱신 내부 동작 `refresh()` 1개.
+- 메시지 표기는 슬라이드 124의 `return = message(parameter)` 형식을 따랐다. 내용이 뻔한 응답 메시지는 생략했다(슬라이드 122).
+- 실습 제약(*"No use of any design patterns"*)에 따라 State·Observer 같은 패턴 없이, 모드 분기는 `alt` 프레임(조건문)으로 표현했다.
+
+### 10.1 참여 클래스와 책임
+
+| 계층 | 클래스 | 책임 |
+|---|---|---|
+| Device | `ButtonHandler` | 디바운싱, 짧게/길게 판정, 자동 반복. 7.2절 매핑에 따라 `WatchController`의 System Operation 호출 |
+| Device | `HWTimer` | 1초마다 `tick()` 호출 |
+| Device | `LCDDriver` | 화면 그리기(`drawTimeView()` 등), `blink()`, `setBacklight()` |
+| Device | `BuzzerDriver` | `on()`, `off()` |
+| Control | `WatchController` | System Operation 15개를 받는 창구. 도메인 객체에 일을 나누고, 끝나면 `DisplayManager.refresh()` 호출 |
+| UI | `DisplayManager` | 도메인 객체에서 값을 읽어 현재 모드의 화면을 그림(UC-03 ~ UC-08), 조명 3초 카운트 |
+| Domain | `ModeManager` | 현재 모드, 설정 상태(편집 항목, 무입력 시간), 이전 화면 저장/복원 |
+| Domain | `TimeKeeper` | 현재 날짜·시각, 시간 설정 값 변경 |
+| Domain | `AlarmManager`, `Alarm` | 알람 슬롯 4개, 선택 슬롯, 알람 시각 확인 / 슬롯별 시각·ON/OFF·백업 |
+| Domain | `Timer` | 설정값, 남은 시간, 동작 상태, 백업 |
+| Domain | `WorldTime`, `City` | 도시 20개, 선택 도시 / 도시 코드, UTC offset, 현지 시각 계산 |
+| Domain | `AlertManager` | 경보 시작·종료, 30초/10초 카운트, 부저 제어 |
+
+### 10.2 다이어그램
+
+| SD | System Operation | 관련 UC | 그림 |
+|---|---|---|---|
+| SD-01 | `tick()` | UC-01, UC-12, UC-15 | ![](sd/SD-01_tick.png) |
+| SD-02 | `changeMode()` | UC-02 | ![](sd/SD-02_changeMode.png) |
+| SD-03 | `startSetting()` | UC-09, UC-10, UC-13 | ![](sd/SD-03_startSetting.png) |
+| SD-04 | `selectNextField()` | UC-09, UC-10, UC-13 | ![](sd/SD-04_selectNextField.png) |
+| SD-05 | `increaseValue()` | UC-09, UC-10, UC-13 | ![](sd/SD-05_increaseValue.png) |
+| SD-06 | `resetSeconds()` | UC-09 | ![](sd/SD-06_resetSeconds.png) |
+| SD-07 | `finishSetting()` | UC-09, UC-10, UC-13 | ![](sd/SD-07_finishSetting.png) |
+| SD-08 | `selectNextAlarm()` | UC-10, UC-11 | ![](sd/SD-08_selectNextAlarm.png) |
+| SD-09 | `toggleAlarm()` | UC-11 | ![](sd/SD-09_toggleAlarm.png) |
+| SD-10 | `startTimer()` | UC-14 | ![](sd/SD-10_startTimer.png) |
+| SD-11 | `stopTimer()` | UC-14 | ![](sd/SD-11_stopTimer.png) |
+| SD-12 | `resetTimer()` | UC-14 | ![](sd/SD-12_resetTimer.png) |
+| SD-13 | `selectNextCity()` | UC-17 | ![](sd/SD-13_selectNextCity.png) |
+| SD-14 | `turnOnLight()` | UC-18 | ![](sd/SD-14_turnOnLight.png) |
+| SD-15 | `stopAlert()` | UC-16 | ![](sd/SD-15_stopAlert.png) |
+| SD-16 | `refresh()` (내부) | UC-03 ~ UC-06 | ![](sd/SD-16_refresh.png) |
+
+### 10.3 Traceability (System Operation → SD → 참여 클래스)
+
+| System Operation | SD | 참여 클래스 (WatchController 제외) |
+|---|---|---|
+| `tick()` | SD-01 | TimeKeeper, Timer, ModeManager, AlarmManager, AlertManager, DisplayManager, LCDDriver, BuzzerDriver |
+| `changeMode()` | SD-02 | ModeManager, DisplayManager |
+| `startSetting()` | SD-03 | ModeManager, AlarmManager, Alarm, Timer, DisplayManager |
+| `selectNextField()` | SD-04 | ModeManager, DisplayManager |
+| `increaseValue()` | SD-05 | ModeManager, TimeKeeper, AlarmManager, Alarm, Timer, DisplayManager |
+| `resetSeconds()` | SD-06 | TimeKeeper, ModeManager, DisplayManager |
+| `finishSetting()` | SD-07 | ModeManager, TimeKeeper, AlarmManager, Alarm, Timer, DisplayManager |
+| `selectNextAlarm()` | SD-08 | AlarmManager, DisplayManager |
+| `toggleAlarm()` | SD-09 | AlarmManager, Alarm, DisplayManager |
+| `startTimer()` | SD-10 | Timer, DisplayManager |
+| `stopTimer()` | SD-11 | Timer, DisplayManager |
+| `resetTimer()` | SD-12 | Timer, DisplayManager |
+| `selectNextCity()` | SD-13 | WorldTime, DisplayManager |
+| `turnOnLight()` | SD-14 | DisplayManager, LCDDriver |
+| `stopAlert()` | SD-15 | AlertManager, BuzzerDriver, ModeManager, DisplayManager |
+| (`refresh()` 내부) | SD-16 | ModeManager, TimeKeeper, AlarmManager, Alarm, Timer, WorldTime, City, LCDDriver |

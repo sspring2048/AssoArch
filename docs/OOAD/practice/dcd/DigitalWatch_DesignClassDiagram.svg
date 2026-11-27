@@ -42,7 +42,7 @@
 <text x="2012.7" y="982.3" text-anchor="middle" font-size="12" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">0..2</text>
 <text x="2019.6" y="851.0" font-size="12" fill="#1a4f9c" stroke="#fff" stroke-width="3" paint-order="stroke">active</text>
 <rect x="40" y="40" width="314.8" height="140" fill="#f3eefa" stroke="#6a3d9a" stroke-width="1.4"/>
-<text x="197.4" y="55" text-anchor="middle" font-size="11" fill="#555">«UI layer · external»</text>
+<text x="197.4" y="55" text-anchor="middle" font-size="11" fill="#555">«UI layer» (external)</text>
 <text x="197.4" y="72" text-anchor="middle" font-size="14" font-weight="bold">ButtonHandler</text>
 <line x1="40" y1="80" x2="354.8" y2="80" stroke="#6a3d9a"/>
 <text x="48" y="98" font-size="12" xml:space="preserve">- pressedAt : Time [0..1]</text>

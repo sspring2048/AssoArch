@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="756.3399999999999" height="376" viewBox="0 0 756.3399999999999 376" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, WenQuanYi Zen Hei, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="756" height="376" viewBox="0 0 756 376" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, WenQuanYi Zen Hei, sans-serif">
 <defs><marker id="f" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker></defs>
-<rect width="756.3399999999999" height="376" fill="#fff"/>
+<rect width="756" height="376" fill="#fff"/>
 <text x="20" y="30" font-size="17" font-weight="bold">SD-14 · turnOnLight()</text>
 <text x="20" y="50" font-size="13" fill="#555">관련 UC: UC-18</text>
 <line x1="110" y1="112" x2="110" y2="356" stroke="#999" stroke-dasharray="5 5"/>

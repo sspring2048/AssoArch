@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="949.8" height="408" viewBox="0 0 949.8 408" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, WenQuanYi Zen Hei, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="949" height="408" viewBox="0 0 949 408" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, WenQuanYi Zen Hei, sans-serif">
 <defs><marker id="f" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker></defs>
-<rect width="949.8" height="408" fill="#fff"/>
+<rect width="949" height="408" fill="#fff"/>
 <text x="20" y="30" font-size="17" font-weight="bold">SD-09 · toggleAlarm()</text>
 <text x="20" y="50" font-size="13" fill="#555">관련 UC: UC-11</text>
 <line x1="110" y1="112" x2="110" y2="388" stroke="#999" stroke-dasharray="5 5"/>

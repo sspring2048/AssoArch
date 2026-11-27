@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="835.9" height="410" viewBox="0 0 835.9 410" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, WenQuanYi Zen Hei, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="835" height="410" viewBox="0 0 835 410" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, WenQuanYi Zen Hei, sans-serif">
 <defs><marker id="f" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker></defs>
-<rect width="835.9" height="410" fill="#fff"/>
+<rect width="835" height="410" fill="#fff"/>
 <text x="20" y="30" font-size="17" font-weight="bold">SD-10 · startTimer()</text>
 <text x="20" y="50" font-size="13" fill="#555">관련 UC: UC-14</text>
 <rect x="25" y="260" width="780.9" height="84" fill="none" stroke="#666" stroke-width="1.1"/>

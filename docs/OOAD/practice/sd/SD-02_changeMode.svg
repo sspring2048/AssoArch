@@ -16,8 +16,8 @@
 <text x="460" y="79" text-anchor="middle" font-size="11" fill="#555">«domain»</text>
 <text x="460" y="98" text-anchor="middle" font-size="13" text-decoration="underline">:ModeManager</text>
 <line x1="635" y1="112" x2="635" y2="378" stroke="#999" stroke-dasharray="5 5"/>
-<rect x="565.0" y="60" width="140" height="52" fill="#efe7f7" stroke="#6a3d9a" stroke-width="1.3"/>
-<text x="635" y="79" text-anchor="middle" font-size="11" fill="#555">«UI»</text>
+<rect x="565.0" y="60" width="140" height="52" fill="#fde9e7" stroke="#a33a2c" stroke-width="1.3"/>
+<text x="635" y="79" text-anchor="middle" font-size="11" fill="#555">«control»</text>
 <text x="635" y="98" text-anchor="middle" font-size="13" text-decoration="underline">:DisplayManager</text>
 <rect x="455" y="188" width="10" height="14" fill="#f4f4f4" stroke="#555"/>
 <rect x="630" y="278" width="10" height="14" fill="#f4f4f4" stroke="#555"/>

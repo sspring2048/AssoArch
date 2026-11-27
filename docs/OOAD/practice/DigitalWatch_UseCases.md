@@ -25,7 +25,7 @@ OOAD 팀 실습 (슬라이드 77, 85 ~ 88) · Activity #1 Planning
 | 시간 값 | 설정 무입력 타임아웃 60초, 알람음 30초, 타이머 경보음 10초, 조명 3초 |
 | 깜빡임 | LCD 하드웨어의 blink 기능을 쓴다. SW는 "이 항목을 깜빡여라 / 그만"만 지시하고, 깜빡임 주기는 SW가 세지 않는다. |
 | 버튼 시간 처리 | 디바운싱, 길게(2초) 판정, 자동 반복은 ButtonHandler(UI 계층)가 자체 타이머로 처리한다. `tick()`과는 별개다. |
-| 계층 구조 | 실습 지시(*"Take care of the layered architecture"*)에 따라 계층으로 나눈다.<br>**UI 계층 – 입력 (시스템 경계 밖)**: `ButtonHandler`. 버튼 디바운싱, 짧게/길게(2초) 판정, 자동 반복, 현재 상태를 조회해 System Operation 호출(7.2절 매핑 표)<br>**Control 계층**: `WatchController`. System Operation을 받아 도메인 객체에 일을 나눈다<br>**Domain 계층**: 현재 시각, 알람, 타이머, 도시 등 도메인 데이터와 규칙<br>**UI 계층 – 출력 / Device 드라이버**: `DisplayManager`, `LCDDriver`, `BuzzerDriver` |
+| 계층 구조 | 실습 지시(*"Take care of the layered architecture"*)에 따라 계층으로 나눈다.<br>**UI 계층 – 입력 (시스템 경계 밖)**: `ButtonHandler`. 버튼 디바운싱, 짧게/길게(2초) 판정, 자동 반복, 현재 상태를 조회해 System Operation 호출(7.2절 매핑 표)<br>**Control 계층**: `WatchController`(System Operation을 받아 도메인 객체에 일을 나눈다), `DisplayManager`(처리 후 도메인 상태를 읽어 화면 갱신)<br>**Domain 계층**: 현재 시각, 알람, 타이머, 도시 등 도메인 데이터와 규칙<br>**Device 드라이버**: `LCDDriver`, `BuzzerDriver`<br>※ UI 계층은 경계 밖의 ButtonHandler(입력)만 해당한다. 화면 갱신은 시스템 제어의 일부로 보고 Control 계층에 둔다. |
 | 시간 기반 동작 | 시간 계수(1초), 설정 타임아웃(60초), 경보 지속(30초/10초), 조명(3초)은 모두 `tick()`을 세어 처리한다. 별도 외부 이벤트는 없다. |
 | 이전 화면 | 경보가 시작될 때 기능 화면, 선택 상태, 설정 중인 값을 저장한다. 모든 경보가 끝나면 복원한다. 경보가 겹치면 첫 경보가 시작될 때 한 번만 저장한다. |
 
@@ -440,7 +440,7 @@ System Operation은 **15개**다.
 | Device | `LCDDriver` | 화면 그리기(`drawTimeView()` 등), `blink()`, `setBacklight()` |
 | Device | `BuzzerDriver` | `on()`, `off()` |
 | Control | `WatchController` | System Operation 15개를 받는 창구. 도메인 객체에 일을 나누고, 끝나면 `DisplayManager.refresh()` 호출 |
-| UI | `DisplayManager` | 도메인 객체에서 값을 읽어 현재 모드의 화면을 그림(UC-03 ~ UC-08), 조명 3초 카운트 |
+| Control | `DisplayManager` | 화면 갱신 제어. 도메인 객체에서 값을 읽어 현재 모드의 화면을 LCDDriver로 그림(UC-03 ~ UC-08), 조명 3초 카운트 |
 | Domain | `ModeManager` | 현재 모드, 설정 상태(편집 항목, 무입력 시간), 이전 화면 저장/복원 |
 | Domain | `TimeKeeper` | 현재 날짜·시각, 시간 설정 값 변경 |
 | Domain | `AlarmManager`, `Alarm` | 알람 슬롯 4개, 선택 슬롯, 알람 시각 확인 / 슬롯별 시각·ON/OFF·백업 |

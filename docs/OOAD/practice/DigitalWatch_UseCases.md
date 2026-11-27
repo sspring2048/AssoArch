@@ -7,7 +7,7 @@ OOAD 팀 실습 (슬라이드 77, 85 ~ 88) · Activity #1 Planning
 ![System Context Diagram](context/DigitalWatch_SystemContext.png)
 
 - 편집용 원본: [context/DigitalWatch_SystemContext.drawio](context/DigitalWatch_SystemContext.drawio) · 벡터 이미지: [SVG](context/DigitalWatch_SystemContext.svg)
-- 입력: **ButtonHandler**(UI 계층)가 보내는 System Operation, Time Source의 `tick()`(1초). 출력: LCD(화면 표시, 백라이트), Buzzer(경보음).
+- 입력: **ButtonHandler**(UI 계층)가 보내는 System Operation, Time Source의 `tick()`(1초). 출력: LCDDriver(화면 표시, 백라이트), BuzzerDriver(경보음).
 - 시스템 경계는 **DW Control SW**다. ButtonHandler는 UI 계층으로 보고 **경계 밖 외부 요소**로 둔다. 물리 버튼 4개(MODE · SET · ADJUST · LIGHT)의 press/release는 ButtonHandler가 받아서 해석한다.
 - ButtonHandler는 7.2절 매핑에 필요한 **현재 상태**(모드, 설정 중, 경보 중, 타이머 동작)를 DW Control SW에서 조회한다(점선).
 - SW controller에 내장된 HW Timer도 SW 입장에서는 외부 장치로 본다.
@@ -25,7 +25,7 @@ OOAD 팀 실습 (슬라이드 77, 85 ~ 88) · Activity #1 Planning
 | 시간 값 | 설정 무입력 타임아웃 60초, 알람음 30초, 타이머 경보음 10초, 조명 3초 |
 | 깜빡임 | LCD 하드웨어의 blink 기능을 쓴다. SW는 "이 항목을 깜빡여라 / 그만"만 지시하고, 깜빡임 주기는 SW가 세지 않는다. |
 | 버튼 시간 처리 | 디바운싱, 길게(2초) 판정, 자동 반복은 ButtonHandler(UI 계층)가 자체 타이머로 처리한다. `tick()`과는 별개다. |
-| 계층 구조 | 실습 지시(*"Take care of the layered architecture"*)에 따라 슬라이드 114의 3계층으로 나눈다.<br>**1. User Interface 계층 (시스템 경계 밖)**: `ButtonHandler`. 버튼 디바운싱, 짧게/길게(2초) 판정, 자동 반복, 현재 상태를 조회해 System Operation 호출(7.2절 매핑 표)<br>**2. Application Logic and Domain Objects 계층**: `WatchController`(GRASP **Controller**, 슬라이드 217: System Operation을 처음 받아 조정), `DisplayManager`(처리 후 도메인 상태를 읽어 화면 갱신), `ModeManager`, `TimeKeeper`, `AlarmManager`, `Alarm`, `Timer`, `WorldTime`, `City`, `AlertManager`, `Alert`<br>**3. Technical Services 계층**: `LCDDriver`, `BuzzerDriver` |
+| 계층 구조 | 실습 지시(*"Take care of the layered architecture"*)에 따라 슬라이드 114의 3계층으로 나눈다.<br>**1. User Interface 계층 (시스템 경계 밖)**: `ButtonHandler`. 버튼 디바운싱, 짧게/길게(2초) 판정, 자동 반복, 현재 상태를 조회해 System Operation 호출(7.2절 매핑 표)<br>**2. Application Logic and Domain Objects 계층**: `WatchController`(GRASP **Controller**, 슬라이드 217: System Operation을 처음 받아 조정), `DisplayManager`(처리 후 도메인 상태를 읽어 화면 갱신), `ModeManager`, `TimeKeeper`, `AlarmManager`, `Alarm`, `Timer`, `WorldTime`, `City`, `AlertManager`, `Alert`<br>**3. Technical Services 계층 (시스템 경계 밖)**: `LCDDriver`, `BuzzerDriver`<br>※ 하드웨어를 직접 다루는 SW(입력의 ButtonHandler, 출력의 LCDDriver · BuzzerDriver)는 플랫폼으로 보고 모두 시스템 경계 밖에 둔다. DW Control SW는 2번 계층만으로 이루어진다. |
 | 시간 기반 동작 | 시간 계수(1초), 설정 타임아웃(60초), 경보 지속(30초/10초), 조명(3초)은 모두 `tick()`을 세어 처리한다. 별도 외부 이벤트는 없다. |
 | 이전 화면 | 경보가 시작될 때 기능 화면, 선택 상태, 설정 중인 값을 저장한다. 모든 경보가 끝나면 복원한다. 경보가 겹치면 첫 경보가 시작될 때 한 번만 저장한다. |
 
@@ -261,7 +261,7 @@ Evident 9개, Hidden 9개.
 - 편집용 원본: [ssd/DigitalWatch_SSD.drawio](ssd/DigitalWatch_SSD.drawio) (UC마다 한 페이지, 12페이지)
 - system event 이름은 의도 수준이다. 버튼 → System Operation 변환은 시스템 밖의 ButtonHandler(UI 계층)가 맡는다(1장, 2장 계층 구조, 7.2절 매핑 표).
 - 시스템을 black box(`:DW Control SW`)로 놓고, 외부에서 들어오는 **system event**와 시스템의 응답만 그렸다.
-- lifeline은 System Context Diagram의 외부 요소와 같다: system event를 보내는 `:ButtonHandler`와 `Time Source`, 응답(화면 표시, 백라이트, 경보음)을 받는 `LCD · Buzzer`. 교재 SSD(슬라이드 98)처럼 외부 요소는 Actor 모양으로, 시스템은 `:DW Control SW` 상자 하나로 그렸다. 외부 요소에는 시스템 밖임을 구분하도록 `«device»`를 붙였다.
+- lifeline은 System Context Diagram의 외부 요소와 같다: system event를 보내는 `:ButtonHandler`와 `Time Source`, 응답(화면 표시, 백라이트, 경보음)을 받는 `LCDDriver · BuzzerDriver`. 교재 SSD(슬라이드 98)처럼 외부 요소는 Actor 모양으로, 시스템은 `:DW Control SW` 상자 하나로 그렸다. 외부 요소에는 시스템 밖임을 구분하도록 `«device»`를 붙였다.
 - system event 이름은 **버튼이 아니라 의도 수준**으로 지었다(슬라이드 102: `scan()`보다 `enterItem()`). 버튼 매핑은 아래 System Operations 표에 따로 적었다.
 - Hidden UC는 Use Case Diagram에서는 Actor가 없지만, SSD에서는 사건을 일으키는 외부 장치가 필요하므로 `Time Source`를 lifeline으로 그렸다.
 - 화면 표시 UC(UC-03 ~ UC-08)는 외부 event가 없으므로 따로 SSD를 그리지 않았다. 다른 SSD의 응답 메시지("~ 화면 표시")로 나타난다.
@@ -430,7 +430,7 @@ System Operation은 **15개**다.
 - 메시지 표기는 슬라이드 124의 `return = message(parameter)` 형식을 따랐다. 내용이 뻔한 응답 메시지는 생략했다(슬라이드 122).
 - 메모(note)의 `:=`는 대입(객체 내부 상태가 바뀜)을, `=`는 조건 비교를 뜻한다. 속성 이름은 Domain Model과 같게 썼다(예: `Timer.remainingTime`).
 - **설정 무입력 타이머 규칙:** 설정 중 입력(SD-03 ~ SD-06)이 오면 `WatchController`가 항상 `ModeManager.resetIdle()`을 호출해 `idleSec := 0`으로 만든다. `tick()`(SD-01)은 `countIdle()`로 `idleSec`을 1씩 올리고, 60이 되면 타임아웃을 처리한다. `idleSec`은 설계 속성이라 Domain Model에는 없고 Design Class Diagram의 `ModeManager`에 둔다.
-- 교재 SD(슬라이드 278)처럼 시스템 내부 lifeline에는 스테레오타입을 붙이지 않았다. 시스템 밖의 `ButtonHandler`, `HWTimer`는 Actor 모양에 `«device»`를 붙여 구분했다.
+- 교재 SD(슬라이드 278)처럼 시스템 내부 lifeline에는 스테레오타입을 붙이지 않았다. 시스템 밖의 `ButtonHandler`, `HWTimer`, `LCDDriver`, `BuzzerDriver`는 Actor 모양에 `«device»`를 붙여 구분했다.
 - 실습 제약(*"No use of any design patterns"*)에 따라 State·Observer 같은 패턴 없이, 모드 분기는 `alt` 프레임(조건문)으로 표현했다.
 
 ### 10.1 참여 클래스와 책임
@@ -439,8 +439,8 @@ System Operation은 **15개**다.
 |---|---|---|
 | UI (경계 밖) | `ButtonHandler` | 외부 요소. 디바운싱, 짧게/길게 판정, 자동 반복. 현재 상태를 조회해 7.2절 매핑에 따라 `WatchController`의 System Operation 호출 |
 | (하드웨어, 경계 밖) | `HWTimer` | 1초마다 `tick()` 호출 |
-| Technical Services | `LCDDriver` | 화면 그리기(`drawTimeView()` 등), `blink()`, `setBacklight()` |
-| Technical Services | `BuzzerDriver` | `on()`, `off()` |
+| Technical Services (경계 밖) | `LCDDriver` | 화면 그리기(`drawTimeView()` 등), `blink()`, `setBacklight()` |
+| Technical Services (경계 밖) | `BuzzerDriver` | `on()`, `off()` |
 | Application Logic & Domain | `WatchController` | GRASP Controller(슬라이드 217). System Operation 15개를 받는 창구. 도메인 객체에 일을 나누고, 끝나면 `DisplayManager.refresh()` 호출 |
 | Application Logic & Domain | `DisplayManager` | 화면 갱신 제어. 도메인 객체에서 값을 읽어 현재 모드의 화면을 LCDDriver로 그림(UC-03 ~ UC-08), 조명 3초 카운트 |
 | Application Logic & Domain | `ModeManager` | 현재 모드, 설정 상태(편집 항목, 무입력 시간), 이전 화면 저장/복원 |
@@ -497,8 +497,8 @@ System Operation은 **15개**다.
 ![Design Class Diagram](dcd/DigitalWatch_DesignClassDiagram.png)
 
 - 편집용 원본: [dcd/DigitalWatch_DesignClassDiagram.drawio](dcd/DigitalWatch_DesignClassDiagram.drawio) · 벡터 이미지: [SVG](dcd/DigitalWatch_DesignClassDiagram.svg)
-- 교재 Class Diagram(슬라이드 279)처럼 시스템 내부 클래스에는 스테레오타입을 붙이지 않았다. 시스템 밖의 `ButtonHandler`만 `«device»`로 표시했다. 타입 정의 상자의 `«enumeration»`, `«dataType»`은 UML 키워드다. 하드웨어 `HWTimer`는 클래스가 아니라서 넣지 않았다. 시스템 경계 밖의 `ButtonHandler`는 SD와 이어지도록 넣되, 회색 점선 테두리로 구분했다.
-- 색 구분: 회색 점선은 시스템 경계 밖 외부 요소(`ButtonHandler`), 노란색은 시스템 내부 클래스, **파란색은 외부 장치(LCD, Buzzer)를 제어하는 드라이버**(`LCDDriver`, `BuzzerDriver`), 회색은 타입 정의다(그림 왼쪽 위 범례).
+- 교재 Class Diagram(슬라이드 279)처럼 시스템 내부 클래스에는 스테레오타입을 붙이지 않았다. 시스템 밖의 `ButtonHandler`, `LCDDriver`, `BuzzerDriver`만 `«device»`로 표시했다. 타입 정의 상자의 `«enumeration»`, `«dataType»`은 UML 키워드다. 하드웨어 `HWTimer`는 클래스가 아니라서 넣지 않았다. 시스템 경계 밖의 `ButtonHandler`, `LCDDriver`, `BuzzerDriver`는 SD와 이어지도록 넣되, 회색 점선 테두리와 `«device»`로 구분했다.
+- 색 구분: 회색 점선 + `«device»`는 시스템 경계 밖 외부 요소(`ButtonHandler`, `LCDDriver`, `BuzzerDriver`), 노란색은 시스템 내부 클래스, 회색은 타입 정의다(그림 오른쪽 아래 범례).
 - 10장 Sequence Diagram에 나온 메시지를 받는 쪽 클래스의 operation으로 모았다(슬라이드 178: SD에서 Class Diagram을 반복적으로 도출).
 - 표기(슬라이드 142 ~ 164):
   - 가시성: `+` public, `-` private. 속성은 `이름 : 타입 [다중성] = 기본값`.
@@ -514,7 +514,7 @@ System Operation은 **15개**다.
 | User, Button | `ButtonHandler` (경계 밖), enum `ButtonId` | 사용자와 물리 버튼은 소프트웨어 클래스가 아니다. 버튼 입력 해석은 외부 UI 계층 ButtonHandler가 맡는다 |
 | DigitalWatch | `WatchController` | 시스템 전체를 대표하던 개념이 System Operation을 받는 Controller 클래스가 되었다(GRASP facade controller, 슬라이드 217) |
 | TimeSource | (없음) | 하드웨어. `tick()`은 WatchController의 operation으로 남았다 |
-| LCD, Buzzer | `LCDDriver`, `BuzzerDriver`, `DisplayManager` | 장치 제어(드라이버)와 화면 구성(DisplayManager)을 나눴다 |
+| LCD, Buzzer | `LCDDriver`, `BuzzerDriver`(경계 밖), `DisplayManager` | 장치 제어(드라이버, 플랫폼)와 화면 구성(DisplayManager, 시스템 내부)을 나눴다 |
 | Mode + 하위 개념 4개 | enum `Mode` + `ModeManager.currentMode` | 디자인 패턴 금지 제약에 따라 상속(State 패턴) 대신 열거형과 조건 분기로 바꿨다 |
 | Setting | `ModeManager.editingField`, `idleSec` | 설정 상태를 ModeManager의 속성으로 합쳤다. `idleSec`은 설계 단계에서 생긴 속성이다 |
 | ScreenState | dataType `ScreenState`, `ModeManager.savedScreen` | 값 객체(dataType)로 바꿨다 |

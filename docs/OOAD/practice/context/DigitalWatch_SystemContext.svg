@@ -28,11 +28,12 @@
 <text x="660.0" y="265.0" text-anchor="middle" font-size="18" font-weight="bold">DW Control SW</text>
 <rect x="1000" y="130" width="250" height="100" rx="4" fill="#eef2fa" stroke="#3b5b92" stroke-width="1.6"/>
 <text x="1125.0" y="163.0" text-anchor="middle" font-size="13" font-weight="normal">«device»</text>
-<text x="1125.0" y="185.0" text-anchor="middle" font-size="15" font-weight="bold">LCD</text>
-<text x="1125.0" y="207.0" text-anchor="middle" font-size="13" font-weight="normal">(+ Backlight)</text>
+<text x="1125.0" y="185.0" text-anchor="middle" font-size="15" font-weight="bold">LCDDriver</text>
+<text x="1125.0" y="207.0" text-anchor="middle" font-size="13" font-weight="normal">LCD 화면 · 백라이트 제어</text>
 <rect x="1000" y="300" width="250" height="100" rx="4" fill="#eef2fa" stroke="#3b5b92" stroke-width="1.6"/>
-<text x="1125.0" y="344.0" text-anchor="middle" font-size="13" font-weight="normal">«device»</text>
-<text x="1125.0" y="366.0" text-anchor="middle" font-size="15" font-weight="bold">Buzzer</text>
-<text x="20" y="518" font-size="12" fill="#666">시스템 경계 = DW Control SW. 외부 요소는 «device»로 표기한다. ButtonHandler는 경계 밖 외부 요소로 본다: 물리 버튼 4개의 press/release를 해석해 System Operation을 보낸다.</text>
+<text x="1125.0" y="333.0" text-anchor="middle" font-size="13" font-weight="normal">«device»</text>
+<text x="1125.0" y="355.0" text-anchor="middle" font-size="15" font-weight="bold">BuzzerDriver</text>
+<text x="1125.0" y="377.0" text-anchor="middle" font-size="13" font-weight="normal">부저 제어</text>
+<text x="20" y="518" font-size="12" fill="#666">시스템 경계 = DW Control SW. 외부 요소는 «device»로 표기한다. ButtonHandler(입력)와 LCDDriver · BuzzerDriver(출력)는 하드웨어를 다루는 플랫폼 SW로 보고 경계 밖에 둔다.</text>
 <text x="20" y="538" font-size="12" fill="#666">SW controller에 내장된 HW Timer도 SW 입장에서는 외부 장치로 본다.</text>
 </svg>

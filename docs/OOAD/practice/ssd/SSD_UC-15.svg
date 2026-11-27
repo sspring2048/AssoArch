@@ -18,7 +18,7 @@
 <line x1="880" y1="105" x2="880" y2="536" stroke="#888" stroke-dasharray="5 5"/>
 <g stroke="#222" stroke-width="2" fill="none"><circle cx="880" cy="50" r="10"/><line x1="880" y1="60" x2="880" y2="82"/><line x1="864" y1="68" x2="896" y2="68"/><line x1="880" y1="82" x2="868" y2="98"/><line x1="880" y1="82" x2="892" y2="98"/></g>
 <text x="880" y="116" text-anchor="middle" font-size="12" fill="#555" stroke="#fff" stroke-width="4" paint-order="stroke">«device»</text>
-<text x="880" y="133" text-anchor="middle" font-size="14" text-decoration="underline" stroke="#fff" stroke-width="4" paint-order="stroke">LCD · Buzzer</text>
+<text x="880" y="133" text-anchor="middle" font-size="14" text-decoration="underline" stroke="#fff" stroke-width="4" paint-order="stroke">LCDDriver · BuzzerDriver</text>
 <line x1="1200" y1="105" x2="1200" y2="536" stroke="#888" stroke-dasharray="5 5"/>
 <g stroke="#222" stroke-width="2" fill="none"><circle cx="1200" cy="50" r="10"/><line x1="1200" y1="60" x2="1200" y2="82"/><line x1="1184" y1="68" x2="1216" y2="68"/><line x1="1200" y1="82" x2="1188" y2="98"/><line x1="1200" y1="82" x2="1212" y2="98"/></g>
 <text x="1200" y="116" text-anchor="middle" font-size="12" fill="#555" stroke="#fff" stroke-width="4" paint-order="stroke">«device»</text>

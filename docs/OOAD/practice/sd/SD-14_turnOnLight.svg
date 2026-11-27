@@ -29,6 +29,6 @@
 <line x1="465" y1="224" x2="630" y2="224" stroke="#222" stroke-width="1.3" marker-end="url(#f)"/>
 <text x="475" y="218" font-size="13" fill="#8a1c1c" stroke="#fff" stroke-width="3" paint-order="stroke">3: setBacklight(true)</text>
 <path d="M474,264 h222.33999999999997 l10,10 v36 h-232.33999999999997 z" fill="#fffbe6" stroke="#b39500"/>
-<text x="482" y="282" font-size="12">lightRemain = 3초</text>
+<text x="482" y="282" font-size="12">lightRemain := 3초</text>
 <text x="482" y="300" font-size="12">(SD-01 countLight()에서 감소)</text>
 </svg>

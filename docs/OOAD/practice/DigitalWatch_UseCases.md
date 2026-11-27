@@ -423,6 +423,7 @@ System Operation은 **15개**다.
 - 편집용 원본: [sd/DigitalWatch_SequenceDiagrams.drawio](sd/DigitalWatch_SequenceDiagrams.drawio) (16페이지)
 - 슬라이드 113의 "one by one": **System Operation 하나당 Sequence Diagram 하나**(15개) + 화면 갱신 내부 동작 `refresh()` 1개.
 - 메시지 표기는 슬라이드 124의 `return = message(parameter)` 형식을 따랐다. 내용이 뻔한 응답 메시지는 생략했다(슬라이드 122).
+- 메모(note)의 `:=`는 대입(객체 내부 상태가 바뀜)을, `=`는 조건 비교를 뜻한다. 속성 이름은 Domain Model과 같게 썼다(예: `Timer.remainingTime`).
 - 실습 제약(*"No use of any design patterns"*)에 따라 State·Observer 같은 패턴 없이, 모드 분기는 `alt` 프레임(조건문)으로 표현했다.
 
 ### 10.1 참여 클래스와 책임

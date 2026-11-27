@@ -497,13 +497,13 @@ System Operation은 **15개**다.
 ![Design Class Diagram](dcd/DigitalWatch_DesignClassDiagram.png)
 
 - 편집용 원본: [dcd/DigitalWatch_DesignClassDiagram.drawio](dcd/DigitalWatch_DesignClassDiagram.drawio) · 벡터 이미지: [SVG](dcd/DigitalWatch_DesignClassDiagram.svg)
-- 교재 Class Diagram(슬라이드 279)처럼 클래스에 스테레오타입을 붙이지 않았다. 타입 정의 상자의 `«enumeration»`, `«dataType»`은 UML 키워드다. 시스템 밖의 `ButtonHandler`와 하드웨어 `HWTimer`는 넣지 않았다.
-- 색 구분: 노란색은 시스템 내부 클래스, **파란색은 외부 장치(LCD, Buzzer)를 제어하는 드라이버**(`LCDDriver`, `BuzzerDriver`), 회색은 타입 정의다(그림 왼쪽 위 범례).
+- 교재 Class Diagram(슬라이드 279)처럼 클래스에 스테레오타입을 붙이지 않았다. 타입 정의 상자의 `«enumeration»`, `«dataType»`은 UML 키워드다. 하드웨어 `HWTimer`는 클래스가 아니라서 넣지 않았다. 시스템 경계 밖의 `ButtonHandler`는 SD와 이어지도록 넣되, 회색 점선 테두리로 구분했다.
+- 색 구분: 회색 점선은 시스템 경계 밖 외부 요소(`ButtonHandler`), 노란색은 시스템 내부 클래스, **파란색은 외부 장치(LCD, Buzzer)를 제어하는 드라이버**(`LCDDriver`, `BuzzerDriver`), 회색은 타입 정의다(그림 왼쪽 위 범례).
 - 10장 Sequence Diagram에 나온 메시지를 받는 쪽 클래스의 operation으로 모았다(슬라이드 178: SD에서 Class Diagram을 반복적으로 도출).
 - 표기(슬라이드 142 ~ 164):
   - 가시성: `+` public, `-` private. 속성은 `이름 : 타입 [다중성] = 기본값`.
   - 데이터 타입(`DateTime`, `Time`, `Mode` 등)은 속성 텍스트로, 다른 클래스 참조는 **탐색 방향이 있는 연관선**(열린 화살표)으로 그렸다.
-  - 전체-부분 관계(AlarmManager–Alarm 4, WorldTime–City 20, AlertManager–Alert 0..2)는 컴포지션(◆)으로 그렸다.
+  - 전체-부분 관계(AlarmManager–Alarm 4, WorldTime–City 20, AlertManager–Alert 0..2)는 컴포지션(◆)으로 그렸다. 전체 쪽 마름모만 그리고 부분 쪽 화살표는 생략했다.
   - SD에 나오지 않는 getter/setter는 넣지 않았다(슬라이드 154).
   - 반환값으로 받은 객체를 잠깐 쓰는 «use» 의존(WatchController → Alarm 등)은 선이 다른 클래스를 가로질러 그림 안 메모로 대신했다.
 

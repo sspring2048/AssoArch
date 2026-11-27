@@ -498,6 +498,7 @@ System Operation은 **15개**다.
 
 - 편집용 원본: [dcd/DigitalWatch_DesignClassDiagram.drawio](dcd/DigitalWatch_DesignClassDiagram.drawio) · 벡터 이미지: [SVG](dcd/DigitalWatch_DesignClassDiagram.svg)
 - 교재 Class Diagram(슬라이드 279)처럼 클래스에 스테레오타입을 붙이지 않았다. 타입 정의 상자의 `«enumeration»`, `«dataType»`은 UML 키워드다. 시스템 밖의 `ButtonHandler`와 하드웨어 `HWTimer`는 넣지 않았다.
+- 색 구분: 노란색은 시스템 내부 클래스, **파란색은 외부 장치(LCD, Buzzer)를 제어하는 드라이버**(`LCDDriver`, `BuzzerDriver`), 회색은 타입 정의다(그림 왼쪽 위 범례).
 - 10장 Sequence Diagram에 나온 메시지를 받는 쪽 클래스의 operation으로 모았다(슬라이드 178: SD에서 Class Diagram을 반복적으로 도출).
 - 표기(슬라이드 142 ~ 164):
   - 가시성: `+` public, `-` private. 속성은 `이름 : 타입 [다중성] = 기본값`.
